@@ -47,6 +47,167 @@
               <ul>
               </ul>
 
+              <P>The project seeks to address the need for automation in manufacturing through the process
+                automation of assembly and palletization of a versatile and modular “space frame” using a
+                popular robot whose simulation is easily comprehensible and doable, with the same being
+                readily transferred to the real robot assembly environment able to accommodate changes
+                in frequency and variability of the process.
+                </P>
+              <h2>Space Frame</h2>
+              <p>A space frame is a modular and robust structure which can be used as a unit of assemblage
+                for fences, panels, cages, tiles, etc. It can also be used as support structures during
+                construction work. They have potentially higher resistance towards varying temperature &
+                wear and can have the capacity to withstand high loads, given the right design, fabrication
+                and securing mechanism. It can also have a high degree of reusability, as well as easy
+                maintenance and repair</p>
+                <!-- <img src="../assets/img/fanuc.png" class="img-fluid" alt="" height="150" widht="150"> -->
+              <h2>Fanuc M-10iD/12 Robot</h2>
+              <p>The FANUC M-10iD/12 robot is used for the purposes of this project. It is a versatile 6-axis
+                robot with high axis speeds and precision. It has a payload capacity of 12kg while the robot,
+                itself, weighs just 145kg. It also boasts a reach of 1441mm. It has a repeatability of 0.02mm
+                and an articulated structure. It has floor, upside-down and angle mount capabilities. </p><br>
+              <p>The M-10iD/12 robot in the lab comes fitted with the following grippers as standard.Electromagnetic Gripper,Vacuum Gripper,2-Jaw Gripper,3-Jaw Gripper.But inorder to Automate the above process we have used only the Magnetic and Vacuum gripper</p>
+              <!-- <img src="../assets/img/fanuc.png" class="img-fluid" alt="" height="150" widht="150"> -->
+              <h2>Objective</h2>
+              <li>Design and fabrication of space frame</li>
+              <li>Design and fabrication of suitable fixtures for work environment</li>
+              <li>Simulation of process using an easy-to-use and accessible simulation software</li>
+              <li> Transposition to real-world process environment</li>
+              <h2>Methodology</h2>
+              <h5>Design of Space Frame</h5>
+              <p>The design of the space frame had to be done considering the constraints we were
+                dealt with. The available work volumes in the laboratory, the grippers available for
+                use, the payload of the robot, material costs, ease of fabrication, and suitability for
+                industrial application were the chief criteria that determined the design of the space
+                frame.</p>
+                <!-- <img src="../assets/img/fanuc.png" class="img-fluid" alt="" height="150" widht="150"> -->
+              <h5>Design of Fixtures</h5>
+              <p>The default fixtures and layout of the laboratory work environment necessitated the
+                inclusion of separate fixtures on which to carry out the assembly and palletization
+                processes. The weights of the individual parts and assembled frames, dimensions of
+                the parts and the frames, magnetic properties, dimensions of work environment,
+                distance from robot and material costs were the design considerations.
+                </p>
+                <!-- <img src="../assets/img/fanuc.png" class="img-fluid" alt="" height="150" widht="150"> -->
+              <h5>Fabrication</h5>
+              <p>The designs were submitted to an independent third-party contractor. The
+                fabrication was done as a joint effort by the aforementioned professionals and the
+                members of the project team under their supervision.</p>
+                  <!-- <img src="../assets/img/fanuc.png" class="img-fluid" alt="" height="150" widht="150"> -->
+              <h5>Simulation</h5>
+              <p>The simulation had to be done using user-friendly and accessible software. The
+                software chosen for this was FANUC’s own ROBOGUIDE 9.10. Not only was it
+                realistic and customizable to a high degree, the program written on the computer
+                was directly transferable to the real robot, which needed only fine-tuning afterward.</p>
+              <h2>Detailed Dive into simulating the movenment of the Robot Virtually</h2>
+              <p>Any articulated arm robot has a work volume and any operations involving the robot
+                has to be carried out inside this volume. The work volume of a robot lies between
+                the maximum and minimum reach of the robot. In a perfect world the complete
+                work volume of the robot is available to assemble the space frame but we had
+                additional constraints; some of the noteworthy ones are as follows:</p>
+              <p>The maximum reach of the M10iD/12 robot was specified to be 1.441180 meters but the protective cages were bolted well before this limit ,due to which the work volume was reduced</p>
+              <p>The robot M10iD/12 could carry out certain standard pick and place operations for demonstrative purposes using its various grippers, for which certain standard tables were fabricated and bolted in front of the robot. This further limited the available space in the work volume of the robot.</p>
+              <p>The space behind the robot was ominously occupied by the wires connecting the control system and the pneumatic compressors which are used to operate the two jaw and three jaw grippers. Therefore the operations of the space frame were possible only in front of the robot.</p>
+              <p>Due to all these constraints a Work Environment Layout was Designed</p>
+              <h4>Work Environment Layout Design</h4>
+              <p>The measurements which were taken to build the work environment is as follows:</p>
+              <li>Distance between Front cage to grippers= 111 cm</li>
+              <li>Distance between Side cage to grippers= 99 cm</li>
+              <li>Distance between Ground to grippers= 98 cm</li>
+              <li>Standard Table height= 110 cm</li>
+              <li>Standard Table length= 55 cm</li>
+              <li>Standard Table width= 26 cm</li>
+              <li>Reach= 144.1180 cm radial</li>
+              <li>Work length towards the left of the robot= 136 cm</li>
+              <li>Distance between Front cage to Standard table= 34 cm</li>
+              <li>Distance between the two side cages from left to right= 216 cm</li>
+              <li>Distance between standard tables to the cage to the left of the robot= 46 cm</li>
+              <li>Work length towards the right of the robot= 72 cm</li>
+              <p>The Draft of the Work Environment is shown in the figure</p>
+              <!-- <img src="../assets/img/fanuc.png" class="img-fluid" alt="" height="150" widht="150"> -->
+              <h4>Simulation Softwear</h4>
+              <p>FANUC ROBOGUIDE is a robot simulation software that simulates both the robot’s
+                motion and application commands. FANUC ROBOGUIDE version 9.1 is used to
+                simulate the robot for this project. It allows for easy design and creation of the
+                workspace layout and the placement of required elements within it to achieve the
+                desired application. The robot can be programmed offline and the program can be
+                transposed to physical applications. The simulations carried out in ROBOGUIDE
+                maintain accuracy in relation to the real-world application. On a larger, industrial
+                scale, this reduces downtime and reduces losses in production. Path planning of
+                robot motion is intuitive and accompanied by simple animations. The CAD data of
+                designed components, parts and fixtures can be directly imported to ensure
+                accuracy and realism. Alternatively, ROBOGUIDE itself contains an extensive library
+                of highly efficient, application specific tools to simplify programming efforts</p>
+              <p>Since this project involves a material handling application, HandlingPRO work cell is
+                used. HandlingPRO is used for applications including loading, packaging, assembly,
+                and material removal. Features of this work cell include CAD to path programming,
+                conveyor line tracking and machine modelling.
+                </p>
+              <!-- <img src="../assets/img/fanuc.png" class="img-fluid" alt="" height="150" widht="150"> -->
+              <h4>Work environment Layout Design on Fanuc ROBOGUIDE</h4>
+              <p>For any robot simulation to be meaningful and transposable to real world
+                applications, the arrangement of various components in the three-dimensional
+                environment of the robot must be at ideal locations within the robot’s reach. This
+                type of arrangement enhances accuracy and optimizes the performance of the
+                robot. FANUC ROBOGUIDE is used to design the layout and environment of the
+                robot. This design is done in accordance to the physical measurements and
+                dimensions taken directly from the college lab in which the FANUC M-10iD/12 is
+                housed.</p>
+              <P>Many of the components that constitute the layout such as, Parts table, Assembly
+                table, stacking table are designed using CATIA version 19 and the respective CAD
+                files are generated. These CAD files are then directly imported into ROBOGUIDE and integrated into the layout. The remaining components required for the simulation
+                are sourced from ROBOGUIDE’s extensive library of application specific parts and
+                fixtures. These components are then arranged in three-dimensional space at ideal
+                locations within the reach of the robot to optimize its performance. </P>
+               <!-- <img src="../assets/img/fanuc.png" class="img-fluid" alt="" height="150" widht="150"> -->
+              <P>The above figure shows the completed layout designed in ROBOGUIDE. It is done in
+                accordance to the initial CAD design . However, the dimensions of the
+                guard cage are increased in order to sufficiently accommodate the work volume of
+                the robot. This is only a recommended correction, and the simulation is not
+                dependent on it; in other words, it will work in exactly the same way in the
+                artificially constrained environment of the college laboratory. Once the design of the
+                layout is complete, the robot is programmed to execute the required assembly</P>
+              <h4>Programming the Robots Motion </h4>
+              <p>The programming of the M-10iD/12 robot is done on the Teach Pendant using the
+                multitude of functions offered by the controller. Certain simulation programs are
+                also defined directly in the simulator to supplement the functioning of the robot.
+                These are mainly the pick and place programs that inform the robot about the
+                locations and grippers with which each part is to be picked and placed.</p>
+              <h5>Payload Configuration</h5>
+              <p>The robot payload can be defined as the total weight a robot arm can lift. This
+                includes the weight of the end of arm tooling. The setting of the payload is done
+                using the Teach Pendant. Since the mass of the frame coupled to the gripper and its
+                fixture is much less than 12 kg (which is the payload of the robot) the robot is well
+                within its operational limits.</p>
+              <h5>Position Registers</h5>
+              <p>Position registers are memory allocations that store positional values and
+                coordinates. They are used to record and store coordinates of points within the
+                work cell to which the robot must move in order to perform the desired operation.
+                The locus of these points forms the motion path of the robot</p>
+               <!-- <img src="../assets/img/fanuc.png" class="img-fluid" alt="" height="150" widht="150"> -->
+              <h5>Simulation Programs</h5> 
+              <p>Simulation programs are programs that are defined directly in the simulator. These
+                programs allow the addition of instructions such as ‘Pickup’ and ‘Drop’. They are
+                mainly utilized in the stage of the simulation where the gripper is required to
+                actuate to pick up or place a part</p>
+              <!-- <img src="../assets/img/fanuc.png" class="img-fluid" alt="" height="150" widht="150"> -->
+              <p>The payload configuration ,Position Registers and Simulation Programs are used to in the program which simulates the robots motion on ROBOGUIDE</P>
+              <h5>program</h5>
+              <h6>Key Functions in the Program</h6>
+              <ul>
+                <li>UFRAME_NUM: This function is used to set user frame number. Since no tool frames are being used, it is set to zero.</li>
+                <li>UTOOL_NUM: This function is used to set user tool number. Since only one tool is used, it is set to one.</li>
+                <li>PAYLOAD: It allows for the selection of payload. Here, a single payload of 12kg is defined.</li>
+                <li>OVERRIDE: This allows the user to increase or decrease the speed of robot motion without altering the program.</li>
+                <li>CALL: It allows for programs stored in the memory to be called.</li>
+                <li>J PR[] 200mm/sec CNT 25: This function denotes joint movement of the robot to the position specified in the position register 'PR[]'. '200mm/s' denotes the speed with which the robot arm is to move. 'CNT' represents continuous motion.</li>
+                <li>L PR[] 200mm/sec CNT 25: This is similar to the previous function. However, 'L' denotes linear movement. Thus, a linear path is created to the position specified in the position register 'PR[]'.</li>
+                <li>WAIT: This is a function that specifies the time (in sec) the robot must remain in the current position before the next command is executed.</li>
+              </ul>
+              <p>There are only two control programs defined and that is Homing and main.The below image shows the complete program</p>
+               <!-- <img src="../assets/img/fanuc.png" class="img-fluid" alt="" height="150" widht="150"> -->
+               <h2>Simulation of the Pick and Place application</h2>
+               <p>The below video shows the simulation of the pick and place application using the Fanuc M10iD/12 Robot</p><br>
               <iframe width="560" height="315" src="https://www.youtube.com/embed/3663ePPBuCg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
   
             </div>
