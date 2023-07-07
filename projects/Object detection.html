@@ -2,7 +2,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Resume Section Classifier</title>
+  <title>Video Based Object Detection</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
@@ -85,11 +85,11 @@
               </ol> </p>
             <h5>Reading Images as RGB images</h5>
             <li>In order to do this first we have to import the open Cv library.</li>
-            <li>The code to read the RGB image is give as follows: Image=cv2.imread(image_name.jpg)</li>
-            <li>After reading the image we can dispaly the image by using the code cv2.imshow("name_of_the_image",image)</li>
+            <li>The code to read the RGB image is give as follows: <code>Image=cv2.imread(image_name.jpg)</code></li>
+            <li>After reading the image we can dispaly the image by using the code <code>cv2.imshow("name_of_the_image",image)</code></li>
             <h5>Converting Images to HSV Scale</h5>
-            <li>After reading the image in the RGB scale we have to convert it into an HSV image and the code to convert an RGB image to an HSV image is as follows: hsv=cv2.cvtColor(image, cv2.COLOR_BGR2HSV)</li>
-            <li>After converting the RGB image to the HSV Scale the same has to be dispalyed and this is done by using the following code cv2.imshow("hsv_image_name",hsv)</li>
+            <li>After reading the image in the RGB scale we have to convert it into an HSV image and the code to convert an RGB image to an HSV image is as follows: <code>hsv=cv2.cvtColor(image, cv2.COLOR_BGR2HSV)</code></li>
+            <li>After converting the RGB image to the HSV Scale the same has to be dispalyed and this is done by using the following code <code>cv2.imshow("hsv_image_name",hsv)</code></li>
             <h5>Defining the Upper and Lower Color Ranges</h5>
             <p>Note on the ranges of HSV color space in Open CV:The range of differt colors in the HSV space is represented differntly in the Open CV library and the ranges are as follows:
             <li>Hue:The value ranges from 0 to 180 (so the actual Ranges of the HSV color space is divided by 2)</li>
@@ -112,16 +112,16 @@
               <li>Visualizing the detected Contours</li>
             </ol>
             <h5>Reading image as an RGB image</h5>
-            <p>In order to do this first we have to import the open Cv library.The code to read the RGB image is give as Image=cv2.imread(image_name.jpg).After reading the image we can dispaly the image by using the code cv2.imshow("name_of_the_image",image)</p>
+            <p>In order to do this first we have to import the open Cv library.The code to read the RGB image is give as <code>Image=cv2.imread(image_name.jpg)</code>.After reading the image we can dispaly the image by using the code <code>cv2.imshow("name_of_the_image",image)</code></p>
             <h5>Thresholding</h5>
             <p>Applying a thresholding operation is necessary to convert the image into a binary representation, where foreground objects are represented by white pixels and the background by black pixels.</p>
             <p>Here Adaptive Thresholding was used the reason is as follows.Adaptive thresholding is preferred over binary thresholding in certain situations due to its ability to handle variations in image lighting and contrast. It calculates the threshold value for each pixel based on its local neighborhood, adapting to local image conditions and accommodating non-uniform lighting. This adaptability results in better segmentation, enhanced contrast, edge preservation, and improved performance on images with uneven lighting or low contrast. </p>
             <h5>Extraction of Contours</h5>
-            <p>The function cv2.findContours() is used to extract the contours from the thresholded image. This function identifies and returns a list of contours present in the image.</p>
+            <p>The function <code>cv2.findContours()</code> is used to extract the contours from the thresholded image. This function identifies and returns a list of contours present in the image.</p>
             <h5>Contour Filtering and Processing</h5>
-            <p>Once the contours in the image are extracted we have to filter and process them as there may be multiple contours in the image and in order to filter and process the contours we can use the built in function cv2.contourArea() which helps in filtering and approximating contours </p>
+            <p>Once the contours in the image are extracted we have to filter and process them as there may be multiple contours in the image and in order to filter and process the contours we can use the built in function <code>cv2.contourArea()</code> which helps in filtering and approximating contours </p>
             <h5>Visualizing the detected Contours</h5>
-            <p>Once the contours are extracted filtered and processed we can Visualize them by marking the contour in the original image by using the built-in function cv2.drawContours()</p>
+            <p>Once the contours are extracted filtered and processed we can Visualize them by marking the contour in the original image by using the built-in function <code>cv2.drawContours()</code></p>
             <h5>Output of contour detection-When applied to an image with a Tennis ball</h5>
             <p>The output shows the contours detected in the original image (i.e RGB image ) and Image contours are represented in the black image</p>
             <!-- <img src="../assets/img/fanuc.png" class="img-fluid" alt="" height="150" widht="150"> -->
@@ -135,6 +135,7 @@
               </ol>
             </P>
             <h5>Output of the ball detection algorithm on an image with a tennis ball</h5>
+            <!-- <img src="../assets/img/fanuc.png" class="img-fluid" alt="" height="150" widht="150"> -->
             <h3>Appling the developed Methodology to a Video stream</h3>
             <p>The Methodology is exactly the same but the detection algorithm is applied to each frame of the video stream.So the small change in methodology is
               <ol>
@@ -175,11 +176,16 @@
                 <a href="https://learnopencv.com/">LearnOpenCV</a>: Online platform providing tutorials, articles, and resources for OpenCV and computer vision.
               </li>
             </ul>
-
+            <h2>References</h2>
+            <ol>
+              <li>S. Ashwini, S. K. S. Veni, and B. Kavitha. "Image Compression using K-means Clustering" (2015).</li>
+              <li>S. Saqib, K. Bashir, and K. Shahzad. "Image Compression Using K-means Clustering and Principle Component Analysis (PCA)" (2019).</li>
+              <li>K. Sundari and A. Annadurai. "An Image Compression Technique using K-means Clustering Algorithm" (2014).</li>
+              <li>M. Aravindh and N. R. Raajan. "Image Compression using K-means Clustering" (2016).</li>
+              <li>A. Kaur and S. Kaur. "Digital Image Compression using K-means Clustering and Huffman Coding" (2015).</li>
+            </ol>
           </div>
-
         </div>
-
       </div>
     </div><!-- End Portfolio Details -->
   </main><!-- End #main -->
