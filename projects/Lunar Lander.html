@@ -2,7 +2,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
   
-    <title>Movie Recommender</title>
+    <title>Lunar Lander Simulation</title>
     <meta content="" name="descriptison">
     <meta content="" name="keywords">
   
@@ -44,8 +44,134 @@
             <div class="col-lg-12 portfolio-info">
               <br>
               <h2 style="color:#12d640">Development of a simulation of a lunar Lander using Deep Learning Q Networks</h2>
+              <p>The project aimed to achieve the successful landing of a lunar lander in a 2D environment by leveraging reinforcement learning and deep Q-networks.The complete code can be found in my github Page</p>
+              <h2>Methodology</h2>
+              <ol>
+                <li>Package Import: The necessary packages and libraries were imported to support the implementation.</li>
+                <li>Hyperparameters: The hyperparameters for the deep Q-learning algorithm were defined, including learning rate, discount factor, exploration rate, etc.</li>
+                <li>
+                  Lunar Lander Environment:
+                  <ol>
+                    <li>Action Space</li>
+                    <li>Observation Space</li>
+                    <li>Rewards</li>
+                    <li>Episode Termination</li>
+                  </ol>
+                </li>
+                <li>Environment Loading: The Lunar Lander environment was loaded for training and evaluation purposes.</li>
+                <li>Interacting with the Gym Environment: The agent interacted with the Gym environment to observe its dynamics and understand the behavior of the environment.</li>
+                <li>Update the Network Weights: The network weights were updated based on the loss calculated using the Bellman equation.</li>
+                <li>Agent Training: The agent was trained using the deep Q-learning algorithm and experience replay, gradually improving its performance over multiple episodes.</li>
+                <li>Trained Agent Evaluation: The trained agent was evaluated to observe its performance in the Lunar Lander environment.</li>
+              </ol>
+              <h3>Importing the Packages</h3>
               <ul>
+                <li><code>numpy</code> is a package for scientific computing in Python.</li>
+                <li><code>deque </code> will be our data structure for our memory buffer.</li>
+                <li><code>namedtuple</code> will be used to store the experience tuples.</li>
+                <li>The <code>gym toolkit</code> is a collection of environments that can be used to test reinforcement learning algorithms.</li>
+                <li><code>PIL.Image</code> and <code>pyvirtualdisplay</code> are needed to render the Lunar Lander environment.</li>
+                <li><code>tensorflow.keras</code> framework for building deep learning models.</li>
+                <li><code>utils</code> is a module that contains helper functions</li>
               </ul>
+              <h3>Hyperparameters</h3>
+              <p>Hyperparameters refer to the configuration settings or parameters that define the behavior and performance of a machine learning model. Unlike model parameters, which are learned from the data during the training process, hyperparameters are set before training and remain fixed throughout the training process. They influence how the model learns and generalizes from the data.</p>
+              <p>The Hyper parameters of the lunar landing simulator is as follows:
+                <li><code>MEMORY_SIZE = 100_000</code>     # size of memory buffer</li>
+                <li><code>GAMMA = 0.995</code>            # discount factor</li>
+                <li><code>ALPHA = 1e-3</code>              # learning rate</li>
+                <li><code>NUM_STEPS_FOR_UPDATE = 4</code>  # perform a learning update every C time steps</li>
+              </p>
+              <h3>Lunar Lander Environment</h3>
+               <p>An environment represents a problem or task to be solved.The goal of the Lunar Lander environment is to land the lunar lander safely on the landing pad on the surface of the moon. The landing pad is designated by two flag poles and it is always at coordinates (0,0) but the lander is also allowed to land outside of the landing pad. The lander starts at the top center of the environment with a random initial force applied to its center of mass and has infinite fuel. The environment is considered solved if the learner earns 200 points.</p>
+               <h4>Action Space</h4>
+               <p>The agent has four discrete actions available:
+                <ol>
+                  <li>Do Nothing</li>
+                  <li>Fire the right engine</li>
+                  <li>Fire the main engine</li>
+                  <li>Fire the left engine</li>
+                </ol>
+               </p><br>
+               <p>Each action has a corresponding numerical value:
+                <ol>
+                  <li>Do nothing = 0</li>
+                  <li>Fire the right engine = 1</li>
+                  <li>Fire the main engine = 2</li>
+                  <li>Fire the left engine = 3</li>
+                </ol>
+               </p>
+               <h4>Observation Space</h4>
+               <p>The agents Observation space consists of a state vector with 8 variables :</p>
+               <div>
+                <label for="coordinates">Coordinates (x, y)</label>
+                <span id="coordinates"></span>
+              </div>
+              <div>
+                <label for="linear-velocities">Linear Velocities (x', y')</label>
+                <span id="linear-velocities"></span>
+              </div>
+              <div>
+                <label for="angle">Angle (𝜃)</label>
+                <span id="angle"></span>
+              </div>
+              <div>
+                <label for="angular-velocity">Angular Velocity (𝜃')</label>
+                <span id="angular-velocity"></span>
+              </div>
+              <div>
+                <label for="left-leg-contact">Left Leg Contact: This is a boolean represented as l</label>
+                <span id="left-leg-contact"></span>
+              </div>
+              <div>
+                <label for="right-leg-contact">Right Leg Contact: This is a boolean represented as r</label>
+                <span id="right-leg-contact"></span>
+              </div>
+              <h4>Rewards</h4>
+              <div>
+                <strong>Landing on the landing pad and coming to rest:</strong> about 100-140 points
+              </div>
+              <div>
+                <strong>Moving away from the landing pad:</strong> loses reward
+              </div>
+              <div>
+                <strong>Crashing:</strong> -100 points
+              </div>
+              <div>
+                <strong>Coming to rest:</strong> +100 points
+              </div>
+              <div>
+                <strong>Each leg with ground contact:</strong> +10 points
+              </div>
+              <div>
+                <strong>Firing the main engine:</strong> -0.3 points each frame
+              </div>
+              <div>
+                <strong>Firing the side engine:</strong> -0.03 points each frame
+              </div><br>
+              <h4>Episode Termination</h4>
+              <div>
+                <strong>Lunar lander crashes:</strong> if the body of the lunar lander comes in contact with the surface of the moon
+              </div>
+              <div>
+                <strong>Absolute value of the lander's x-coordinate is greater than 1:</strong> it goes beyond the left or right border
+              </div><br>
+              <h3>Loading the Environment</h3>
+              <p>The lunar lander environment is loaded by loading the <code>LunarLander-v2</code> environment from the <code>gym</code> library by using the <code>.make()</code></p>
+              
+
+              
+
+              
+             
+
+
+
+
+
+
+
+  
               <iframe width="560" height="315" src="https://www.youtube.com/embed/vv_w-kD1rVQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
   
