@@ -52,21 +52,21 @@
               <h2>Objective</h2>
 
               <ol>
-                <li>To design antenna, antenna deployment & locking mechanism, electronic actuation system, and spring elements</li>
-                <li>To manufacture antenna deployment mechanism parts and assemble them to form the Proto-Model</li>
-                <li>To test and validate the Proof of Concept (PoC)</li>
+              <li>To design antenna, antenna deployment & locking mechanism, electronic actuation system, and spring elements</li>
+              <li>To manufacture antenna deployment mechanism parts and assemble them to form the Proto-Model</li>
+              <li>To test and validate the Proof of Concept (PoC)</li>
               </ol>
 
               <h2>Methodology</h2>
 
               <ol>
-                <li>Design of different parts of antenna deployment mechanism</li>
-                <li>Design of locking Mechanism</li>
-                <li>Virtual assembly and interference analysis</li>
-                <li>Finite element analysis and kinematic analysis</li>
-                <li>Designing and fabrication of electronic actuators</li>
-                <li>3D Printing and assembly</li>
-                <li>Testing and Validation the Proof of Concept (PoC)</li>
+              <li>Design of different parts of antenna deployment mechanism</li>
+              <li>Design of locking Mechanism</li>
+              <li>Virtual assembly and interference analysis</li>
+              <li>Finite element analysis and kinematic analysis</li>
+              <li>Designing and fabrication of electronic actuators</li>
+              <li>3D Printing and assembly</li>
+              <li>Testing and Validation the Proof of Concept (PoC)</li>
 
               </ol>
 
@@ -77,33 +77,58 @@
                 <p>The complete Automated Booming mechanism can be seen in the below video</p>
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/tdN9qOsXHkc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><br><br>
 
-                <h2>Orbit and Orientation of Cube Satellite</h2><br>
+                <h2>Orbit and Orientation of Cube Satellite</h2>
                 <p>Generally, Cube Satellites are placed in an orbit which is 600 – 700 km above Sea level. The direction of travel along the orbit is in the X direction.The orientation and direction of travel of the Cube Satellite help determine which face of the satellite experiences maximum and minimum solar exposure.</p><br>
                 <!-- <img src="../assets/img/fanuc.png" class="img-fluid" alt="" height="150" widht="150"> -->
                 <!-- <img src="../assets/img/fanuc.png" class="img-fluid" alt="" height="150" widht="150"> -->
 
-                <h2>Different Types of Radiations Experienced in Space </h2><br>
-                <p>The satellite experiences differnt types of Solar radiation when its in Space and these Radiations had to be taken into consideration while choosing the materials to build the components of the satellite</p>
-                <h3>Solar Radiation</h3>
-                <li>The radiation from the sun is the major source of heating that occurs on a satellite the intensity of solar radiation varies; this is due to the elliptical nature of the Earths orbit.</li>
-                <li>
-                  The Heat transfer is given by the equation:-     
-                        Q˙ A1,solar = (αA1)* (Ssolar)* (AA1)</li>
-                <!-- <img src="../assets/img/fanuc.png" class="img-fluid" alt="" height="150" widht="150"> -->
-                <h3>Earth Infrared Radiations</h3>
-                <li>The radiation from the sun is absorbed by the earth and eventually emitted as Infrared Radiations ,The intensity of this radiations is greater in warmer areas as shown in the figure.</li>
-                <!-- <img src="../assets/img/fanuc.png" class="img-fluid" alt="" height="150" widht="150"> -->
-                <h3>Albedo Radiation</h3>
-                <li>Sunlight reflecting of a planets surface is known as Albedo Radiation, the effect of this radiation is profound over continents as land masses reflect more light than water bodies, the avg Albedo radiation is 30% of the solar radiation.</li><br>
-                <h2>Radiative Heat transfer Experienced by the Cube Satellite </h2>
-                <li>The satellite experiences  Radiative heat transfer due to these different radiations  the general expression for radiative heat transfer is show below</li>
-                <li>𝑸𝒊𝒋 = 𝑨𝒊 𝜺𝒊 𝑭𝒊𝒋 𝝈 (〖" 𝑻𝒊" 〗^( 4) − 〖"𝑻" 𝑗〗^( 4) )</li>
-                <p>where</p>
-                <li>A = Surface area.</li>
-                <li>ԑ = Emissivity of the surface, which determines the amount of thermal radiation emitted</li>
-                <li>Fij = View factor between the surfaces, defined as the fraction of total radiant energy that leaves surface ‘I’ which arrives directly on surface ‘j’</li>
-                <li>σ = Stefan-Boltzmann constant, 〖"5.67 X 10" 〗^(−8) W/𝑚^2 𝐾^4</li>
-                <li>Ti, Tj = Surface temperatures in absolute units (K)</li><br>
+                <h2>Different Types of Radiations Experienced in Space </h2>
+                <P>Radiation in space refers to the emission and transmission of energy in the form of electromagnetic waves or particles.There are different types of Radiations and they are as follows:</P>
+                <!DOCTYPE html>
+<html>
+<head>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    .formula {
+      display: block;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h3>Solar Radiation</h3>
+  <ul>
+    <li>The radiation from the sun is the major source of heating that occurs on a satellite. The intensity of solar radiation varies; this is due to the elliptical nature of the Earth's orbit.</li>
+    <li>The Heat transfer is given by the equation:</li>
+  </ul>
+  <p class="formula">\[ \dot{Q}_{A1,\text{solar}} = (\alpha A1)(S_{\text{solar}})(A_{A1}) \]</p>
+  <h3>Earth Infrared Radiations</h3>
+  <ul>
+    <li>The radiation from the sun is absorbed by the earth and eventually emitted as Infrared Radiations. The intensity of this radiation is greater in warmer areas as shown in the figure.</li>
+  </ul>
+  <h3>Albedo Radiation</h3>
+  <ul>
+    <li>Sunlight reflecting off a planet's surface is known as Albedo Radiation. The effect of this radiation is profound over continents as land masses reflect more light than water bodies. The average Albedo radiation is 30% of the solar radiation.</li>
+  </ul>
+  <h2>Radiative Heat Transfer Experienced by the Cube Satellite</h2>
+  <ul>
+    <li>The satellite experiences radiative heat transfer due to these different radiations. The general expression for radiative heat transfer is shown below:</li>
+    <li>\[ Q_{ij} = A_i \varepsilon_i F_{ij} \sigma (T_i^4 - T_j^4) \]</li>
+  </ul>
+  <p>where:</p>
+  <ul>
+    <li>A = Surface area.</li>
+    <li>\( \varepsilon \) = Emissivity of the surface, which determines the amount of thermal radiation emitted.</li>
+    <li>\( F_{ij} \) = View factor between the surfaces, defined as the fraction of total radiant energy that leaves surface 'i' and arrives directly on surface 'j'.</li>
+    <li>\( \sigma \) = Stefan-Boltzmann constant (\( 5.67 \times 10^{-8} \) W/m² K⁴).</li>
+    <li>\( T_i, T_j \) = Surface temperatures in absolute units (K).</li>
+  </ul>
+</body>
+</html>
+
+                
                 <!-- <img src="../assets/img/fanuc.png" class="img-fluid" alt="" height="150" widht="150"> -->
                 <p>By considering all these factors a thermal analysis of the cube sat was done and inorder to with-stand the thermal loads Aluminium 2024 an alloy of Aluminium was used to build the cube Sat </p><br>
                 <!-- <img src="../assets/img/fanuc.png" class="img-fluid" alt="" height="150" widht="150"> -->
@@ -120,6 +145,7 @@
                 </ol><br>
                 <!-- <img src="../assets/img/fanuc.png" class="img-fluid" alt="" height="150" widht="150"> -->
                 <h2>Design of Various componets of the Autonomous Booming Mechanism</h2><br>
+                <p>The below section deals with the design and development of the main components of the antenna booming mechanism.It also tells all the design related constrains taken into consideration</p>
                 <h3>Design of Box and Lid</h3>
                 <li>The box contains the antenna hub, base plate and compression springs, along with any circuitry as needed</li>
                 <!-- <img src="../assets/img/fanuc.png" class="img-fluid" alt="" height="150" widht="150"> -->
@@ -135,18 +161,36 @@
                 <h3>Design of Torsion Springs</h3>
                 <p>The torsion spring has a spring index of 7 in order to make it easier to manufacture. It has a wire diameter of 1.016 mm and a mean diameter of 7.112 mm. It has an internal diameter of 6.096 mm and therefore can easily fit around the pin of diameter 5 mm with a clearance of about 0.5 mm. This ensures reduced contact between hinge pin and torsion spring and therefore results in smoother operation of the lid assembly as a whole and also increases the operational life of the torsion spring. The angle traversed by lid from closed to open position is 270o. This results in a total deflection of 16.75 mm. Furthermore, it has been calculated to provide a torque of 131.308 N-mm and possesses a stiffness of 0.0278 Nm / rad.</p><br>
                 <h4>Calculations for Design of Torsion Spring </h4>
-                <p>The inner diameter of the spring was assumed to be greater than or equal to 6 mm so that there would be a clearance of at least 0.5 mm between the spring and hinge pin when assembled. Also, the length is assumed to be 12 mm for the spring to fit between the hinges on the pin.</p>
-                <p>The material Beryllium-Copper was assumed to be isotropic and possessing uniform density.</p><br>
-                <li>d = Wire diameter of Spring (mm)</li>
-                <li>D = Mean diameter of Spring (mm)</li>
-                <li>Di = Inner diameter of the spring (mm)</li>
-                <li>Spring Index = C = 7</li>
-                <li>Length of Spring = L = 12 mm</li>
-                <li>Di ≥6 </li>
-                <li>C = D/d</li>
-                <li>Di = D-d</li>
-                <li>Angle of Rotation (θ)=  3π/2  rad</li>
-                <li>Young’s Modulus (E)=131 Gpa</li><br>
+                <!DOCTYPE html>
+<html>
+<head>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    .formula {
+      display: block;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <p>The inner diameter of the spring was assumed to be greater than or equal to 6 mm so that there would be a clearance of at least 0.5 mm between the spring and hinge pin when assembled. Also, the length is assumed to be 12 mm for the spring to fit between the hinges on the pin.</p>
+  <p>The material Beryllium-Copper was assumed to be isotropic and possessing uniform density.</p>
+  <ul>
+    <li>d = Wire diameter of Spring (mm)</li>
+    <li>D = Mean diameter of Spring (mm)</li>
+    <li>Di = Inner diameter of the spring (mm)</li>
+    <li>Spring Index = C = 7</li>
+    <li>Length of Spring = L = 12 mm</li>
+    <li>Di ≥ 6</li>
+    <li>C = D/d</li>
+    <li>Di = D - d</li>
+    <li>Angle of Rotation (\( \theta \)) = \( \frac{3\pi}{2} \) rad</li>
+    <li>Young’s Modulus (E) = 131 GPa</li>
+  </ul>
+</body>
+</html>
                  <!-- <img src="../assets/img/fanuc.png" class="img-fluid" alt="" height="150" widht="150"> -->
                 <h3>Design of Antenna Hub & RF Plates</h3>
                 <h4>Antenna Hub</h4>
@@ -169,17 +213,35 @@
                   </p><br>
                 <!-- <img src="../assets/img/fanuc.png" class="img-fluid" alt="" height="150" widht="150"> -->
                  <h4>Caculation of Design of Compression Spring</h4>
-                 <li>d = Wire diameter of Spring (mm)</li>
-                 <li>D = Mean diameter of Spring (mm)</li>
-                 <li>Di = Inner diameter of the spring (mm)</li>
-                 <li>Spring Index = C = 7</li>
-                 <li>Length of Spring without compression= L = 230 mm</li>
-                 <li>Length of Spring after compression=25 mm</li>
-                 <li>Total spring deflection (y)=230-25=205 mm</li>
-                 <li>Force (F)=FOS×Wt.of Hub=2×19.62=39.24 N</li>
-                 <li>Di ≥4.5 </li>
-                 <li>C = D/d</li>
-                 <li>Di = D-d</li>
+                 <!DOCTYPE html>
+<html>
+<head>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    .formula {
+      display: block;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li>d = Wire diameter of Spring (mm)</li>
+    <li>D = Mean diameter of Spring (mm)</li>
+    <li>Di = Inner diameter of the spring (mm)</li>
+    <li>Spring Index = C = 7</li>
+    <li>Length of Spring without compression = L = 230 mm</li>
+    <li>Length of Spring after compression = 25 mm</li>
+    <li>Total spring deflection (\( y \)) = 230 - 25 = 205 mm</li>
+    <li>Force (\( F \)) = FOS × Wt. of Hub = 2 × 19.62 = 39.24 N</li>
+    <li>Di ≥ 4.5</li>
+    <li>C = D/d</li>
+    <li>Di = D - d</li>
+  </ul>
+</body>
+</html>
                  <!-- <img src="../assets/img/fanuc.png" class="img-fluid" alt="" height="150" widht="150"> -->
                  <h3>Design of Blocking Part</h3>
                  <p>The blocking part is a square plate with a side length of 96mm and 6mm thickness.
@@ -254,7 +316,7 @@
                   From the image it can be seen that the base of the antenna hub experiences a significant amount of stress and the antenna hub undergoes maximum deflection. The value of the stress is of the order 20 MPa as shown in the figure but the safe working stress is of the order 140 MPa, and therefore ensures safety.
                   </p>
                 <!-- <img src="../assets/img/fanuc.png" class="img-fluid" alt="" height="150" widht="150"> -->
-                <h3>FEA of the Blockig Part</h3>
+                <h3>FEA of the Blocking Part</h3>
                 <p>As mentioned earlier, a blocking part is used to prevent the antenna hub from ejection to outer space. Therefore, it experiences the same force of 91.12 N but in the opposite direction. FEA is done by applying a force twice the magnitude of the actual force, hence a force of 182.24 N is applied on the blocking part in the upward direction. </p><br>
                 <!-- <img src="../assets/img/fanuc.png" class="img-fluid" alt="" height="150" widht="150"> -->
                 <p>The figure shows the results for the analysis of the blocking part using Al. The value of the stresses is well under the safe stress conditions. In order to damp these forces RVT compounds are used. These compounds absorb the forces acting on the blocking part and prevent the forces dissipating to other components of the antenna deployment mechanism.</p><br>
@@ -305,8 +367,20 @@
                   <li>Thermal Analysis of a 3U-Cubesat, a Case Study of Pakal Satellite.</li>
                   <li>Annon, “Tubular Spacecraft Booms (Extendible, Reel Stored),” tech. Prep. SP-8065, NASA, Feb 1971</li>
                   <li>Cox, K., et. al., “Flight Build of a Furled High Strain Composite Antenna for CubeSats,” Proceedings of the 5th AIAA Spacecraft Structures Conference, 2018 AIAA SciTech Conference, Session on Composite Materials for Spacecraft Structures, AIAA 2018-1678, Kissimmee, FL.</li>
+                  <li>Mechanism Design & Flight Build of Furled High Strain Composite Antenna for CubeSats Bruce Davis*, Ryan VanHalle*, Kevin Cox* and Will Francis* AIAA SciTech Forum 8-12 Jan 2018</li>
+                </ul>    
+
+                <h2>References</h2>
+                <ul>
+                  <li>Doncaster, B., et. al., “SpaceWorks’ 2017 Nano/Microsatellite Market Forecast”, Proceedings of the AIAA/USU Conference on Small Satellites, Swiftly Session 2, SSC17, 2017</li>
+                  <li>Adamowski, J., “SmallSat Market Forecast to Exceed $30 Billion in Coming Decade”, Space News, 9th, August 2017, Online</li>
+                  <li>Murphey, T. et. al., “High Strain Composites,” Proceedings of the 2nd AIAA Spacecraft Structures Conference, 2015 AIAA SciTech Conference, Session on Composite Materials for Spacecraft Structures, AIAA 2015-0942, Kissimmee, FL.</li>
+                  <li>Thermal Analysis and Control of MIST CubeSat</li>
+                  <li>Thermal Analysis of a 3U-Cubesat, a Case Study of Pakal Satellite.</li>
+                  <li>Annon, “Tubular Spacecraft Booms (Extendible, Reel Stored),” tech. Prep. SP-8065, NASA, Feb 1971</li>
+                  <li>Cox, K., et. al., “Flight Build of a Furled High Strain Composite Antenna for CubeSats,” Proceedings of the 5th AIAA Spacecraft Structures Conference, 2018 AIAA SciTech Conference, Session on Composite Materials for Spacecraft Structures, AIAA 2018-1678, Kissimmee, FL.</li>
                   <li>Mechanism Design & Flight Build of Furled High Strain Composite Antenna for CubeSats<br>Bruce Davis*, Ryan VanHalle*, Kevin Cox* and Will Francis* AIAA SciTech Forum 8-12 Jan 2018</li>
-                </ul>
+                </ul>    
             </div>
           </div>
         </div>

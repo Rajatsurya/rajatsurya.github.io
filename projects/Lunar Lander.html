@@ -65,15 +65,13 @@
                 <li>Trained Agent Evaluation: The trained agent was evaluated to observe its performance in the Lunar Lander environment.</li>
               </ol>
               <h3>Importing the Packages</h3>
-              <ul>
                 <li><code>numpy</code> is a package for scientific computing in Python.</li>
                 <li><code>deque </code> will be our data structure for our memory buffer.</li>
                 <li><code>namedtuple</code> will be used to store the experience tuples.</li>
                 <li>The <code>gym toolkit</code> is a collection of environments that can be used to test reinforcement learning algorithms.</li>
                 <li><code>PIL.Image</code> and <code>pyvirtualdisplay</code> are needed to render the Lunar Lander environment.</li>
                 <li><code>tensorflow.keras</code> framework for building deep learning models.</li>
-                <li><code>utils</code> is a module that contains helper functions</li>
-              </ul>
+                <li><code>utils</code> is a module that contains helper functions</li><br>
               <h3>Hyperparameters</h3>
               <p>Hyperparameters refer to the configuration settings or parameters that define the behavior and performance of a machine learning model. Unlike model parameters, which are learned from the data during the training process, hyperparameters are set before training and remain fixed throughout the training process. They influence how the model learns and generalizes from the data.</p>
               <p>The Hyper parameters of the lunar landing simulator is as follows:
@@ -158,20 +156,111 @@
               </div><br>
               <h3>Loading the Environment</h3>
               <p>The lunar lander environment is loaded by loading the <code>LunarLander-v2</code> environment from the <code>gym</code> library by using the <code>.make()</code></p>
-              
-
-              
-
-              
-             
-
-
-
-
-
-
-
+              <p><code>env = gym.make('LunarLander-v2')</code> #code to load the gym environment.Once we load the environment we use the <code>reset() </code> method to reset the environment to the initial state. The lander starts at the top center of the environment and we can render the first frame of the environment by using the <code>.render()</code> method.</p>
+              <p>In order to build our neural network later on we need to know the size of the state vector and the number of valid actions. We can get this information from our environment by using the <code>.observation_space.shape</code> and <code>action_space.n</code> methods, respectively.</p>
+              <h3>Interacting with the Gym Environment</h3>
+              <p>The Gym library implements the standard “agent-environment loop” formalism:
+                In the standard “agent-environment loop” formalism, an agent interacts with the environment in discrete time steps  𝑡=0,1,2,.... At each time step  𝑡, the agent uses a policy  𝜋 to select an action  𝐴𝑡 based on its observation of the environment's state  𝑆𝑡. The agent receives a numerical reward 𝑅𝑡 and on the next time step, moves to a new state 𝑆𝑡+1.</p>
+              <h4>Exploring the Environment's Dynamics</h4>
+              <p>In Open AI's Gym environments, the <code>.step()</code>method is used to run a single time step of the environment's dynamics.The <code>.step()</code> method accepts an action and returns four values:
+              <li><code>observation</code> (object): an environment-specific object representing your observation of the environment. In the Lunar Lander environment this corresponds to a numpy array containing the positions and velocities of the lander </li>
+              <li><code>reward</code> (float): amount of reward returned as a result of taking the given action. In the Lunar Lander environment this corresponds to a float of type <code>numpy.float64</code></li>
+              <li><code>done</code> (boolean): When done is True, it indicates the episode has terminated and it’s time to reset the environment.</li>
+              <li><code>info</code> (dictionary): diagnostic information useful for debugging. We won't be using this variable in this notebook but it is shown here for completeness.</li><br>
+              <p>To begin an episode the environment has to be in the initial state this is done by using the <code>.reset()</code> method</p>
+              <P>Once the environment is reset, the agent can start taking actions in the environment by using the <code>.step()</code> method. Note that the agent can only take one action per time step. when the agent is trained a loop is used to allow the agent to take many consecutive actions during an episode.</P>
+              <h3>Deep Learning Q-Network Learning</h3>
+              <!DOCTYPE html>
+              <html>
+              <head>
+              <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+              <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+              <style>
+                .formula {
+                  display: block;
+                  margin-top: 10px;
+                  margin-bottom: 10px;
+                }
+              </style>
+              </head>
+              <body>
+              <p>In cases where both the state and action space are discrete, we can estimate the action-value function iteratively by using the Bellman equation:</p>
+              <p class="formula">\[ Q_{i+1}(s,a) = R + \gamma \max_{a'} Q_i(s',a') \]</p>
+              <p>This iterative method converges to the optimal action-value function \( Q^*(s,a) \) as \( i \rightarrow \infty \). This means that the agent just needs to gradually explore the state-action space and keep updating the estimate of \( Q(s,a) \) until it converges to the optimal action-value function \( Q^*(s,a) \). However, in cases where the state space is continuous, it becomes practically impossible to explore the entire state-action space. Consequently, this also makes it practically impossible to gradually estimate \( Q(s,a) \) until it converges to \( Q^*(s,a) \).</p>
+              <p>In Deep Q-Learning,this problem is solved by using a neural network to estimate the action-value function \( Q(s,a) \approx Q^*(s,a) \).This neural network is called a Q-Network, and it can be trained by adjusting its weights at each iteration to minimize the mean-squared error in the Bellman equation.</p>
+              <p>Unfortunately, using neural networks in reinforcement learning to estimate action-value functions has proven to be highly unstable. Luckily, there are a couple of techniques that can be employed to avoid instabilities. These techniques consist of using a Target Network and Experience Replay.</p>
+              </body>
+              </html>
+              <h4>Target Network</h4>
+              <!DOCTYPE html>
+<html>
+<head>
+  <!-- Add your CSS and other meta tags here -->
+</head>
+<body>
+  <main id="main">
+    <div class="content">
+      <p>The Q-Network can be trained by adjusting its weights at each iteration to minimize the mean-squared error in the Bellman equation, where the target values are given by:</p>
+      <p class="formula">\( y = R + \gamma \max_{a'} Q(s', a'; w) \)</p>
+      <p>where \( w \) are the weights of the Q-Network. This means that the weights \( w \) are adjusted at each iteration to minimize the following error:</p>
+       <!-- <img src="../assets/img/fanuc.png" class="img-fluid" alt="" height="150" widht="150"> -->
+      <p>Notice that this forms a problem because the target \( y_{\text{target}} \) is changing on every iteration. To avoid oscillations and instabilities, a separate neural network is created for generating the target values.This separate neural network is called as the target Q-Network, denoted as \( \hat{Q} \), and it will have the same architecture as the original Q-Network.</p>
+      <p>By using the target Q-Network, the error becomes:</p>
+       <!-- <img src="../assets/img/fanuc.png" class="img-fluid" alt="" height="150" widht="150"> -->
+      <p>where \( w^- \) and \( w \) are the weights of the target Q-Network and the Q-Network, respectively.</p>
+      <p>In practice, the following algorithm is used : every \( C \) time step , the target Q-Network's are used to generate the target values (\( y \)) and the weights of the target Q-Network is updated by using a soft update:</p>
+      <p class="formula">\( w^- \leftarrow \tau w + (1 - \tau) w^- \)</p>
+      <p>By using the soft update, the target values are changed slowly, greatly improving the stability of the learning algorithm.</p>
+    </div>
+  </main>
+</body>
+</html>
+<p> the Deep  𝑄
+  -Network (DQN) is a neural network that approximates the action-value function  𝑄(𝑠,𝑎)≈𝑄∗(𝑠,𝑎)
+  . It does this by learning how to map states to  𝑄
+   values.</p>
+   <p>To solve the Lunar Lander environment, a DQN with the following architecture is employed:</p>
+      <ul>
+        <li>An Input layer that takes <em>state_size</em> as input.</li>
+        <li>A Dense layer with 64 units and a ReLU activation function.</li>
+        <li>A Dense layer with 64 units and a ReLU activation function.</li>
+        <li>A Dense layer with <em>num_actions</em> units and a linear activation function. This is the output layer of the network.</li>
+      </ul>
+      <p>This architecture allows the DQN to learn and approximate the action-value function effectively. Lastly , Adam has to be set as the optimizer with the learning rate equal to ALPHA.This was defined in the Hyperparameters section</p>
+      <h4>Experience Replay</h4>
+      <p>When an agent interacts with the environment, the states, actions, and rewards the agent experiences are sequential by nature. If the agent tries to learn from these consecutive experiences it can run into problems due to the strong correlations between them. To avoid this,a technique is employed known as Experience Replay to generate uncorrelated experiences for training the agent. Experience replay consists of storing the agent's experiences (i.e the states, actions, and rewards the agent receives) in a memory buffer and then sampling a random mini-batch of experiences from the buffer to do the learning. The experience tuples  (𝑆𝑡,𝐴𝑡,𝑅𝑡,𝑆𝑡+1)
+        will be added to the memory buffer at each time step as the agent interacts with the environment.</p>
+      <p>By using experience replay problematic correlations, oscillations and instabilities are avoided. In addition, experience replay also allows the agent to potentially use the same experience in multiple weight updates, which increases data efficiency.</p>
+      <p>The experience replay is combined with the Deep Q-Learning algorithm to achieve effective learning</p>
+      <h3> Updating the Network's Weights</h3>
+      <p>The <code>agent_learn</code> function is used over here. The agent_learn function will update the weights of the  𝑄
+        and target  𝑄̂ 
+        networks using a custom training loop. Because a custom training loop is used the gradients have to be retrived via a <code>tf.GradientTape</code> instance, and then call <code>optimizer.apply_gradients()</code> to update the weights of the  𝑄
+       -Network. Note that the <code>@tf.function decorator</code> is also used to increase performance. Without this decorator the training of the network will take twice as long.</p>
+      <h3>Training the Agent</h3>
+      <p>
+        <li>Line 1: Initialize the <code>memory_buffer</code> with a capacity of <code>N = MEMORY_SIZE</code>. Note that a <code>deque</code> is used as the data structure for the <code>memory_buffer</code>.</li>
+        <li>Line 2: Initialize the <code>target_q_network</code> by setting its weights equal to those of the <code>q_network</code>.
+        <li>Line 3: Start the outer loop with <code>M = num_episodes = 2000</code>. This number is reasonable as the agent is expected to solve the Lunar Lander environment in less than 2000 episodes using the defined parameters.</li>
+        <li>Line 4: Reset the environment to the initial state and obtain the initial state.</li>
+        <li>Line 5: Start the inner loop with <code>T = max_num_timesteps = 1000</code>. The episode terminates automatically if it hasn't terminated after 1000 time steps.</li>
+        <li>Line 6: Observe the current state and choose an action using an ε-greedy policy. The agent starts with ε = epsilon = 1, resulting in an ε-greedy policy equivalent to the equiprobable random policy. As training progresses, decrease ε slowly towards a minimum value using a given ε-decay rate. The minimum ε value is set to 0.01 to maintain a small amount of exploration during training.</li>
+        <li>Line 7: Take the chosen action in the environment and obtain the reward and the next_state.</li>
+        <li>Line 8: Store the <code>experience (state, action, reward, next_state, done)</code> tuple in the <code>memory_buffer</code>, including the done variable to track episode termination for setting the y targets.</li>
+        <li>Line 9: Check if the conditions are met to perform a learning update using the custom ,<code>utils.check_update_conditions</code> function. This function verifies if <code>C = NUM_STEPS_FOR_UPDATE</code> = 4 time steps have occurred and if the <code>memory_buffer</code> has enough experience tuples to fill a mini-batch.</li>
+        <li>Lines 10 - 13: If the update variable is True, perform a learning update. This includes sampling a random mini-batch of experience tuples from the <code>memory_buffer</code>, setting the y targets, performing gradient descent, and updating the weights of the networks using the <code>agent_learn</code> function.</li>
+        <li>Line 14: Set next_state as the new state at the end of each inner loop iteration. Additionally, check if the episode has reached a terminal state <code>(done = True)</code> and break out of the inner loop if so.</li>
+        <li>Line 15: Update the value of ε at the end of each outer loop iteration and check if the environment has been solved. Consider the environment solved if the agent receives an average of 200 points in the last 100 episodes. If not solved, continue the outer loop and start a new episode.</li><br>
   
+        Note: Additional variables are included to track the total number of points the agent received in each episode. This helps determine if the environment has been solved and provides insight into the agent's performance during training. The time module is used to measure the training duration.
+        </p>
+
+        <p>The below Plot shows how the agen improved during its training</p>
+        <!-- <img src="../assets/img/fanuc.png" class="img-fluid" alt="" height="150" widht="150"> -->
+
+        <h2>Output</h2>
+        <p>Now that the agent is trained , we can see it in action. The <code>utils.create_video function</code>  to create a video of the agent interacting with the environment using the trained  𝑄
+          -Network. The <code>utils.create_video function</code> uses the <code>imageio library</code> to create the video.The video of the Lunar lander landing on the landing pad can be seen in the below video</p><br>
               <iframe width="560" height="315" src="https://www.youtube.com/embed/vv_w-kD1rVQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
   
