@@ -58,13 +58,13 @@
             <h3>Difference between RGB scale and HSV scale</h3>
             <h5>The RGB scale</h5>
             <p>The RGB scale, or RGB color model, is a widely used system for representing colors in digital imaging and computer graphics. It combines three primary colors (red, green, and blue) to define colors. Each color channel is assigned a value from 0 to 255, indicating the intensity or brightness of that color component. By adjusting these intensity levels, a broad range of colors can be achieved. The RGB scale is additive, meaning different combinations of red, green, and blue can create various hues, shades, and tones. It is commonly used in displays, monitors, and digital cameras. However, color reproduction can vary between devices due to differences in color gamut and calibration.</p>
-            <img src="../assets/img/flower.jpg" class="img-fluid" alt="" height="150" widht="150"><br><br> 
+            <img src="../assets/img/flower.jpg" class="img-fluid" alt="" height="150" width="150"><br><br> 
             <h5>The HSV Scale</h5>
             <p>
               The HSV scale, also known as the HSV color model, is a color representation system used in computer vision and image processing. Unlike the RGB color model, which combines red, green, and blue to create colors, the HSV model defines colors based on three components: hue, saturation, and value.
               
               Hue represents the dominant wavelength of a color, saturation determines the intensity or purity of the color, and value represents the brightness or lightness. The HSV scale offers advantages such as intuitive color selection, robustness to illumination changes, and efficient color filtering.The HSV Color Space is shown in the below image</p>
-              <img src="../assets/img/Screenshot (96) - Copy.png" class="img-fluid" alt="" height="150" widht="150"><br><br>
+              <img src="../assets/img/Screenshot (96) - Copy.png" class="img-fluid" alt="" height="150" width="150"><br><br>
             <h5>Reason For Using HSV scale over RGB scale</h5>
             <p>The HSV scale is preferred over the RGB scale in color filtering techniques due to the following reasons:
             <ol>
@@ -88,12 +88,12 @@
             <li>The code to read the RGB image is give as follows: <code>Image=cv2.imread(image_name.jpg)</code></li>
             <li>After reading the image we can dispaly the image by using the code <code>cv2.imshow("name_of_the_image",image)</code></li><br>
             <p>The below image shows the output of the code which displays the RGB image</p><br>
-            <img src="../assets/img/tennis ball RGB .png" class="img-fluid" alt="" height="150" widht="150"><br><br>
+            <img src="../assets/img/tennis ball RGB .png" class="img-fluid" alt="" height="150" width="150"><br><br>
             <h5>Converting Images to HSV Scale</h5>
             <li>After reading the image in the RGB scale we have to convert it into an HSV image and the code to convert an RGB image to an HSV image is as follows: <code>hsv=cv2.cvtColor(image, cv2.COLOR_BGR2HSV)</code></li>
             <li>After converting the RGB image to the HSV Scale the same has to be dispalyed and this is done by using the following code <code>cv2.imshow("hsv_image_name",hsv)</code></li><br>
             <p>The below image shows the output of the code which converts RGB images to HSV images</p>
-            <img src="../assets/img/HSV image- Tennis ball .png" class="img-fluid" alt="" height="150" widht="150"><br><br>
+            <img src="../assets/img/HSV image- Tennis ball .png" class="img-fluid" alt="" height="150" width="150"><br><br>
             <h5>Defining the Upper and Lower Color Ranges</h5>
             <p>Note on the ranges of HSV color space in Open CV:The range of differt colors in the HSV space is represented differntly in the Open CV library and the ranges are as follows:
             <li>Hue:The value ranges from 0 to 180 (so the actual Ranges of the HSV color space is divided by 2)</li>
@@ -117,7 +117,7 @@
             <h5>Thresholding</h5>
             <p>Applying a thresholding operation is necessary to convert the image into a binary representation, where foreground objects are represented by white pixels and the background by black pixels.</p>
             <p>Here Adaptive Thresholding was used the reason is as follows.Adaptive thresholding is preferred over binary thresholding in certain situations due to its ability to handle variations in image lighting and contrast. It calculates the threshold value for each pixel based on its local neighborhood, adapting to local image conditions and accommodating non-uniform lighting. This adaptability results in better segmentation, enhanced contrast, edge preservation, and improved performance on images with uneven lighting or low contrast.The below image shows Adaptive Thresholding applied to an imaged of the tennis Ball </p><br>
-            <img src="../assets/img/Adaptive thres.png" class="img-fluid" alt="" height="150" widht="150"><br><br>
+            <img src="../assets/img/Adaptive thres.png" class="img-fluid" alt="" height="150" width="150"><br><br>
             <h5>Extraction of Contours</h5>
             <p>The function <code>cv2.findContours()</code> is used to extract the contours from the thresholded image. This function identifies and returns a list of contours present in the image.</p>
             <h5>Contour Filtering and Processing</h5>
@@ -126,7 +126,7 @@
             <p>Once the contours are extracted filtered and processed we can Visualize them by marking the contour in the original image by using the built-in function <code>cv2.drawContours()</code></p>
             <h5>Output of contour detection-When applied to an image with a Tennis ball</h5>
             <p>The output shows the contours detected in the original image (i.e RGB image ) and Image contours are represented in the black image</p>
-            <img src="../assets/img/Screenshot (99).png" class="img-fluid" alt="" height="150" widht="150"><br><br>
+            <img src="../assets/img/Screenshot (99).png" class="img-fluid" alt="" height="150" width="150"><br><br>
             <h3>Applying the developed Methodology to Images with a Tennis Ball</h3>
             <P>The Methodology remains the same
               <ol>
@@ -137,8 +137,8 @@
               </ol>
             </P>
             <h5>Output of the ball detection algorithm on an image with a tennis ball</h5>
-            <img src="../assets/img/Screenshot from 2023-07-17 02-08-56.png" class="img-fluid" alt="" height="150" widht="150"><br>
-            <img src="../assets/img/Screenshot from 2023-07-17 02-13-09.png" class="img-fluid" alt="" height="150" widht="150"><br><br>
+            <img src="../assets/img/Screenshot from 2023-07-17 02-08-56.png" class="img-fluid" alt="" height="150" width="150"><br>
+            <img src="../assets/img/Screenshot from 2023-07-17 02-13-09.png" class="img-fluid" alt="" height="150" width="150"><br><br>
             
             <h3>Appling the developed Methodology to a Video stream</h3>
             <p>The Methodology is exactly the same but the detection algorithm is applied to each frame of the video stream.So the small change in methodology is
