@@ -60,7 +60,7 @@
                 wear and can have the capacity to withstand high loads, given the right design, fabrication
                 and securing mechanism. It can also have a high degree of reusability, as well as easy
                 maintenance and repair</p>
-                <!-- <img src="../assets/img/fanuc.png" class="img-fluid" alt="" height="150" width="150"> -->
+               <!--<img src="../assets/img/fanuc.png" class="img-fluid" alt="" height="150" width="150">-->
               <h2>Fanuc M-10iD/12 Robot</h2>
               <p>The FANUC M-10iD/12 robot is used for the purposes of this project. It is a versatile 6-axis
                 robot with high axis speeds and precision. It has a payload capacity of 12kg while the robot,
@@ -184,13 +184,11 @@
                 coordinates. They are used to record and store coordinates of points within the
                 work cell to which the robot must move in order to perform the desired operation.
                 The locus of these points forms the motion path of the robot</p>
-               <!-- <img src="../assets/img/fanuc.png" class="img-fluid" alt="" height="150" width="150"> -->
               <h5>Simulation Programs</h5> 
               <p>Simulation programs are programs that are defined directly in the simulator. These
                 programs allow the addition of instructions such as ‘Pickup’ and ‘Drop’. They are
                 mainly utilized in the stage of the simulation where the gripper is required to
                 actuate to pick up or place a part</p>
-              <!-- <img src="../assets/img/fanuc.png" class="img-fluid" alt="" height="150" width="150"> -->
               <p>The payload configuration ,Position Registers and Simulation Programs are used to in the program which simulates the robots motion on ROBOGUIDE</P>
               <h5>program</h5>
               <h6>Key Functions in the Program</h6>
@@ -205,7 +203,197 @@
                 <li>WAIT: This is a function that specifies the time (in sec) the robot must remain in the current position before the next command is executed.</li>
               </ul>
               <p>There are only two control programs defined and that is Homing and main.The below image shows the complete program</p>
-               <!-- <img src="../assets/img/fanuc.png" class="img-fluid" alt="" height="150" width="150"> -->
+              <!DOCTYPE html>
+<html>
+<head>
+<style>
+  /* Add any custom styling here */
+  .code {
+    font-family: monospace;
+    white-space: pre;
+    background-color: #000000;
+    padding: 10px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+  }
+</style>
+</head>
+<body>
+
+<div class="code">
+Homing
+1. ! A program to return the robot to home position.
+2. J PR [ 1 : Home ] 100 % FINE
+Main
+3. ! The main program that defines the robot motion.
+4. ! Basic pre processors
+5. UFRAME_NUM = 0
+6. UTOOL_NUM = 1
+7. PAYLOAD [ 1 : Test ]
+8. OVERRIDE = 30 %
+9. CALL HOMING
+10. ! Pickup of Space Frame 2 (bottom)
+11. J PR [ 4 : Frame2p ] 100 % CNT25
+12. Tool_Offset , PR [ 8 : zofst150 ]
+13. L PR [ 4 : Frame2p ] 2000mm/sec CNT25
+14. WAIT .50 (sec)
+15. CALL PICKUP2
+16. WAIT .50 (sec)
+17. L PR [ 4 : Frame2p ] 2000mm/sec FINE
+18. Tool_Offset , PR [ 8 : zofst150 ]
+19. ! Placing of Space Frame 2 (bottom)
+20. J PR [ 5 : Frame2d ] 100 % CNT25
+21. Tool_Offset , PR [ 8 : zofst150 ]
+22. L PR [ 5 : Frame2d ] 2000mm/sec CNT25
+23. WAIT .50 (sec)
+24. CALL PLACE2
+25. WAIT .50 (sec)
+26. L PR [ 5 : Frame2d ] 2000mm/sec FINE
+27. Tool_Offset , PR [ 8 : zofst150 ]
+28. CALL HOMING
+29. ! Pickup of Acrylic Sheet
+30. J PR [ 6 : Acrp ] 100 % CNT25
+31. Tool_Offset , PR [ 8 : zofst150 ]
+32. L PR [ 6 : Acrp ] 2000mm/sec CNT25
+33. WAIT .50 (sec)
+34. CALL PICKUPACR
+35. WAIT .50 (sec)
+36. L PR [ 6 : Acrp ] 2000mm/sec FINE
+37. Tool_Offset , PR [ 8 : zofst150 ]
+38. ! Placing of Acrylic Sheet
+39. J PR [ 7 : Acrd ] 100 % CNT25
+40. Tool_Offset , PR [ 8 : zofst150 ]
+41. L PR [ 7 : Acrd ] 2000mm/sec CNT25
+42. WAIT .50 (sec)
+43. CALL PLACEACR
+44. WAIT .50 (sec)
+45. L PR [ 7 : Acrd ] 2000mm/sec FINE
+46. Tool_Offset , PR [ 8 : zofst150 ]
+47. CALL HOMING
+48. ! Pickup of Space Frame 1 (top)
+49. J PR [ 2 : Frame1p ] 100 % CNT25
+50. Tool_Offset , PR [ 8 : zofst150 ]
+51. L PR [ 2 : Frame1p ] 2000mm/sec CNT25
+52. WAIT .50 (sec)
+53. CALL PICKUP1
+54. WAIT .50 (sec)
+55. L PR [ 2 : Frame1p ] 2000mm/sec FINE
+56. Tool_Offset , PR [ 8 : zofst150 ]
+57. ! Placing of Space Frame 1 (top)
+58. J PR [ 3 : Frame1d ] 100 % CNT25
+59. Tool_Offset , PR [ 8 : zofst150 ]
+60. L PR [ 3 : Frame1d ] 2000mm/sec CNT25
+61. WAIT .50 (sec)
+62. CALL PLACE1
+63. WAIT .50 (sec)
+64. L PR [ 3 : Frame1d ] 2000mm/sec FINE
+65. Tool_Offset , PR [ 8 : zofst150 ]
+66. CALL HOMING
+67. ! Stacking of first assembled frame
+68. J PR [ 3 : Frame1d ] 100 % CNT25
+69. Tool_Offset , PR [ 8 : zofst150 ]
+70. L PR [ 3 : Frame1d ] 2000mm/sec CNT25
+71. WAIT .50 (sec)
+72. CALL PICKUP11
+73. CALL PICKUP12
+74. CALL PICKUP13
+75. WAIT .50 (sec)
+76. L PR [ 3 : Frame1d ] 2000mm/sec FINE
+77. Tool_Offset , PR [ 8 : zofst150 ]
+78. J PR [ 9 : Stack ] 100 % CNT25
+79. Tool_Offset , PR [ 8 : zofst150]
+80. L PR [ 9 : Stack ] 2000mm/sec CNT25
+81. WAIT .50 (sec)
+82. CALL PLACE11
+83. CALL PLACE12
+84. CALL PLACE13
+85. WAIT .50 (sec)
+86. L PR [ 9 : Stack ] 2000mm/sec FINE
+87. Tool_Offset , PR [ 8 : zofst150 ]
+88. CALL HOMING
+89. ! Pickup of Space Frame 2 (bottom) set 2
+90. J PR [ 13 : Frame_2p ] 100 % CNT25
+91. Tool_Offset , PR [ 8 : zofst150 ]
+92. L PR [ 13 : Frame_2p ] 2000mm/sec CNT25
+93. WAIT .50 (sec)
+94. CALL PICKUP_2
+95. WAIT .50 (sec)
+96. L PR [ 13 : Frame2_p ] 2000mm/sec FINE
+97. Tool_Offset , PR [ 8 : zofst150 ]
+98. ! Placing of Space Frame 2 (bottom) set 2
+99. J PR [ 14 : Frame_2d ] 100 % CNT25
+100. Tool_Offset , PR [ 8 : zofst150 ]
+101. L PR [ 14 : Frame_2d ] 2000mm/sec CNT25
+102. WAIT .50 (sec)
+103. CALL PLACE_2
+104. WAIT .50 (sec)
+105. L PR [ 14 : Frame_2d ] 2000mm/sec FINE
+106. Tool_Offset , PR [ 8 : zofst150 ]
+107. CALL HOMING
+108. ! Pickup of Acrylic Sheet set 2
+109. J PR [ 15 : Acr_p ] 100 % CNT25
+110. Tool_Offset , PR [ 8 : zofst150 ]
+111. L PR [ 15 : Acr_p ] 2000mm/sec CNT25
+112. WAIT .50 (sec)
+113. CALL PICKUP_ACR
+114. WAIT .50 (sec)
+115. L PR [ 15 : Acr_p ] 2000mm/sec FINE
+116. Tool_Offset , PR [ 8 : zofst150 ]
+117. ! Placing of Acrylic Sheet set 2
+118. J PR [ 16 : Acr_d ] 100 % CNT25
+119. Tool_Offset , PR [ 8 : zofst150 ]
+120. L PR [ 16 : Acr_d ] 2000mm/sec CNT25
+121. WAIT .50 (sec)
+122. CALL PLACE_ACR
+123. WAIT .50 (sec)
+124. L PR [ 16 : Acr_d ] 2000mm/sec FINE
+125. Tool_Offset , PR [ 8 : zofst150 ]
+126. CALL HOMING
+127. ! Pickup of Space Frame 1 (top) set 2
+128. J PR [ 11 : Frame_1p ] 100 % CNT25
+129. Tool_Offset , PR [ 8 : zofst150 ]
+130. L PR [ 11 : Frame_1p ] 2000mm/sec CNT25
+131. WAIT .50 (sec)
+132. CALL PICKUP_1
+133. WAIT .50 (sec)
+134. L PR [ 11 : Frame_1p ] 2000mm/sec FINE
+135. Tool_Offset , PR [ 8 : zofst150 ]
+136. ! Placing of Space Frame 1 (top) set 2
+137. J PR [ 12 : Frame_1d ] 100 % CNT25
+138. Tool_Offset , PR [ 8 : zofst150 ]
+139. L PR [ 12 : Frame_1d ] 2000mm/sec CNT25
+140. WAIT .50 (sec)
+141. CALL PLACE_1
+142. WAIT .50 (sec)
+143. L PR [ 12 : Frame_1d ] 2000mm/sec FINE
+144. Tool_Offset , PR [ 8 : zofst150 ]
+145. CALL HOMING
+146. ! Stacking of second assembled frame
+147. J PR [ 12 : Frame_1d ] 100 % CNT25
+148. Tool_Offset , PR [ 8 : zofst150 ]
+149. L PR [ 12 : Frame_1d ] 2000mm/sec CNT25
+150. WAIT .50 (sec)
+151. CALL PICKUP_11
+152. CALL PICKUP_12
+153. CALL PICKUP_13
+154. WAIT .50 (sec)
+155. L PR [ 12 : Frame_1d ] 2000mm/sec FINE
+156. Tool_Offset , PR [ 8 : zofst150 ]
+157. J PR [ 17 : Stack_2 ] 100 % CNT25
+158. Tool_Offset , PR [ 8 : zofst150 ]
+159. L PR [ 17 : Stack_2 ] 2000mm/sec CNT25
+160. WAIT .50 (sec)
+161. CALL PLACE_11
+162. CALL PLACE_12
+163. CALL PLACE_13
+164. WAIT .50 (sec)
+165. L PR [ 17 : Stack_2 ] 2000mm/sec FINE
+166. Tool_Offset , PR [ 8 : zofst150 ]
+167. CALL HOMING
+</div><br><br>
+
+<p> One controller program can also be called inside another. In this case, '<strong>Homing</strong>' is called multiple times inside '<strong>Main</strong>'. Various simulation programs are also called inside '<strong>Main</strong>'. Once the above programs have been entered into the Teach Pendant, the program '<strong>Main</strong>' is run to complete the required simulation.</p>
+
                <h2>Simulation of the Pick and Place application</h2>
                <p>The below video shows the simulation of the pick and place application using the Fanuc M10iD/12 Robot</p><br>
                <div style="text-align: center; padding-bottom: 24px;"><iframe width="560" height="315" src="https://www.youtube.com/embed/3663ePPBuCg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><br><br></div>
