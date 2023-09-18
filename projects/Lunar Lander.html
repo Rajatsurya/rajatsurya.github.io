@@ -203,10 +203,10 @@
       <p>The Q-Network can be trained by adjusting its weights at each iteration to minimize the mean-squared error in the Bellman equation, where the target values are given by:</p>
       <p class="formula">\( y = R + \gamma \max_{a'} Q(s', a'; w) \)</p>
       <p>where \( w \) are the weights of the Q-Network. This means that the weights \( w \) are adjusted at each iteration to minimize the following error:</p>
-      <div style="text-align: center; padding-bottom: 24px;"><img src="../assets/img/Screenshot (105).png" class="img-fluid" alt="" height="150" width="150"></div>
+      <div style="text-align: center; padding-bottom: 24px;"><img src="../assets/img/Screenshot (105).png" class="img-fluid" alt="" height="315" width="560"></div>
       <p>Notice that this forms a problem because the target \( y_{\text{target}} \) is changing on every iteration. To avoid oscillations and instabilities, a separate neural network is created for generating the target values.This separate neural network is called as the target Q-Network, denoted as \( \hat{Q} \), and it will have the same architecture as the original Q-Network.</p>
       <p>By using the target Q-Network, the error becomes:</p>
-      <div style="text-align: center; padding-bottom: 24px;"><img src="../assets/img/Screenshot (106).png" class="img-fluid" alt="" height="150" width="150"></div>
+      <div style="text-align: center; padding-bottom: 24px;"><img src="../assets/img/Screenshot (106).png" class="img-fluid" alt="" height="315" width="560"></div>
       <p>where \( w^- \) and \( w \) are the weights of the target Q-Network and the Q-Network, respectively.</p>
       <p>In practice, the following algorithm is used : every \( C \) time step , the target Q-Network's are used to generate the target values (\( y \)) and the weights of the target Q-Network is updated by using a soft update:</p>
       <p class="formula">\( w^- \leftarrow \tau w + (1 - \tau) w^- \)</p>
@@ -256,7 +256,7 @@
         </p>
 
         <p>The below Plot shows how the Agent improved during its training</p>
-        <div style="text-align: center; padding-bottom: 24px;"><img src="../assets/img/Agent Training.png" class="img-fluid" alt="" height="150" width="150"></div>
+        <div style="text-align: center; padding-bottom: 24px;"><img src="../assets/img/Agent Training.png" class="img-fluid" alt="" height="315" width="560"></div>
 
         <h2>Output</h2>
         <p>Now that the agent is trained , it can be seen in action. The <code>utils.create_video function</code> is used to create a video of the agent interacting with the environment using the trained  𝑄
