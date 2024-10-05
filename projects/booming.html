@@ -302,24 +302,26 @@
 </head>
 <body>
   <p>
-    $D = 7 \times 1.499 = 10.493$<br>
-    $K = \frac{{4C-1}}{{4C-4}} + 0.651C = \frac{{(4 \times 7)-1}}{{(4 \times 7)-4}} + 0.651 \times 7 = 1.218$<br>
-    $Outer \ Diameter \ (D_o) = D + d = 10.493 + 1.499 = 11.992 \, mm$<br>
-    $Inner \ Diameter \ (D_i) = D - d = 10.493 - 1.499 = 8.99 \, mm$<br>
-    $Modulus \ of \ Rigidity \ (G) = 4.4 \times 10^4 \, MPa \ (Beryllium - Copper)$<br>
-    $y = \frac{{8FD}}{{3i}} \left( \frac{{d^4G}}{{4C}} \right) = 205 \, mm$<br>
-    $Number \ of \ active \ turns \ (i) = \frac{{205 \times 1.499}}{{4 \times 39.24 \times 10.493}} = 125.57 \approx 126$<br>
-    $i' = i + n = 126 + 2 = 128 \ (n = 2 \ for \ Square, Ground \ ended)$<br>
-    $Max. \ Deflection \ (y_{max}) = \frac{{8FD}}{{3i}} \left( \frac{{d^4G}}{{4C}} \right) = 205.69 \, mm$<br>
-    $a = 0.25y_{max} = 0.25 \times 205.69 = 51.424 \, mm$<br>
-    $Solid \ Length = i'd = 128 \times 1.499 = 191.872 \, mm$<br>
-    $lo \geq (i + n)d + y_{max} + a = (128) \times 1.499 + 205.69 + 51.424 = 448.982 \, mm$<br>
-    $Pitch \ (p) = \frac{{lo-2d}}{{i'}} = \frac{{448.98-(2 \times 1.499)}}{{128}} = 3.4825 \, mm = 8FDK \left( \frac{{\pi D^3}}{{16C}} \right) = 880.8 \, MPa$<br>
-    $F = \frac{{\pi \times 1.499^3 \times 880.8}}{{8 \times 10.493 \times 1.218}} = 91.15 \, N$<br>
-    $Required \ Stiffness \ (k_o) = \frac{{F}}{{y}} = \frac{{91.15}}{{205}} = 444.63 \, N/mm$<br>
-    $Actual \ Stiffness \ (k_a) = \frac{{d}}{{4G}} \left( \frac{{8iD^3}}{{4C}} \right) = \frac{{1.499 \times 4.4 \times 10^4}}{{8 \times 126 \times 10.493^3}} = 437.026 \, N/mm$
+    \( D = 7 \times 1.499 = 10.493 \, \text{mm} \)<br>
+    \( K = \frac{{4C-1}}{{4C-4}} + 0.651C = \frac{{(4 \times 7)-1}}{{(4 \times 7)-4}} + 0.651 \times 7 = 1.218 \)<br>
+    \( \text{Outer Diameter} \, (D_o) = D + d = 10.493 + 1.499 = 11.992 \, \text{mm} \)<br>
+    \( \text{Inner Diameter} \, (D_i) = D - d = 10.493 - 1.499 = 8.99 \, \text{mm} \)<br>
+    \( \text{Modulus of Rigidity} \, (G) = 4.4 \times 10^4 \, \text{MPa} \, (\text{Beryllium-Copper}) \)<br>
+    \( y = \frac{{8FD}}{{3i}} \left( \frac{{d^4G}}{{4C}} \right) = 205 \, \text{mm} \)<br>
+    \( \text{Number of active turns} \, (i) = \frac{{205 \times 1.499}}{{4 \times 39.24 \times 10.493}} = 125.57 \approx 126 \)<br>
+    \( i' = i + n = 126 + 2 = 128 \, (n = 2 \, \text{for square, ground ended}) \)<br>
+    \( \text{Max. Deflection} \, (y_{\text{max}}) = \frac{{8FD}}{{3i}} \left( \frac{{d^4G}}{{4C}} \right) = 205.69 \, \text{mm} \)<br>
+    \( a = 0.25y_{\text{max}} = 0.25 \times 205.69 = 51.424 \, \text{mm} \)<br>
+    \( \text{Solid Length} = i' d = 128 \times 1.499 = 191.872 \, \text{mm} \)<br>
+    \( l_o \geq (i + n)d + y_{\text{max}} + a = (128) \times 1.499 + 205.69 + 51.424 = 448.982 \, \text{mm} \)<br>
+    \( \text{Pitch} \, (p) = \frac{{l_o - 2d}}{{i'}} = \frac{{448.98-(2 \times 1.499)}}{{128}} = 3.4825 \, \text{mm} \)<br>
+    \( 8FDK \left( \frac{{\pi D^3}}{{16C}} \right) = 880.8 \, \text{MPa} \)<br>
+    \( F = \frac{{\pi \times 1.499^3 \times 880.8}}{{8 \times 10.493 \times 1.218}} = 91.15 \, \text{N} \)<br>
+    \( \text{Required Stiffness} \, (k_o) = \frac{{F}}{{y}} = \frac{{91.15}}{{205}} = 444.63 \, \text{N/mm} \)<br>
+    \( \text{Actual Stiffness} \, (k_a) = \frac{{d}}{{4G}} \left( \frac{{8iD^3}}{{4C}} \right) = \frac{{1.499 \times 4.4 \times 10^4}}{{8 \times 126 \times 10.493^3}} = 437.026 \, \text{N/mm} \)
   </p>
 </body>
+
 </html>
                  <h3>Design of Blocking Part</h3>
                  <p>The blocking part is a square plate with a side length of 96mm and 6mm thickness.
