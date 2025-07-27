@@ -1,0 +1,227 @@
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Motor Characterization</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="../assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/venobox/venobox.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="../assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Personal - v2.2.0
+  * Template URL: https://bootstrapmade.com/personal-free-resume-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body data-gr-c-s-loaded="true">
+  
+  <!-- ======= Portfolio Details ======= -->
+    <main id="main">
+      <div id="portfolio-details" class="portfolio-details">
+        <div class="container">
+  
+          <div class="row">
+  
+            <div class="col-lg-12 portfolio-info">
+              <br>
+              <h2 style="color:#12d640">Torque and Thermal Characterization of the AK80-9 BLDC Motor (T-Motor)</h2>
+              <h3>Dynamic Test</h3>
+              <h4>Setup for the Dynamic Test</h4>
+                <p>Two ACT-PACK motors are connected on opposite ends of a Futek torque sensor using a shaft and flexible couplers, with the entire assembly securely mounted on a test bed. The Futek sensor communicates with a Raspberry Pi via I2C for data logging, while the motors are connected through c-type cables and controlled using the Open Source Leg (OSL) libraries.</p>
+                <div style="text-align: center; padding-bottom: 24px;"><img src="../assets/img/dyn_test_setup.png"  class="img-fluid" alt="" height="315" width="560"></div>
+              <h4>Methodology</h4>
+              <p>
+                The motor on the left was operated in current control mode and the motor on the right in voltage control mode, with commanded currents from −10 A to +10 A and voltages up to 10 V. Data was collected using the Open Source Leg (OSL) logging function, recording timestamp, torque (Futek sensor calibrated readings), motor current, motor voltage, motor position, motor velocity, battery current, and battery voltage, and saved to CSV. 
+                </p>
+              
+                <p>
+                After collection, the following regression model was fit:<br>
+                τ<sub>a</sub> = τ<sub>m</sub> − τ<sub>f</sub>(θ̇<sub>a</sub>, I<sub>q</sub>) − B<sub>a</sub>θ̇<sub>a</sub> − J<sub>a</sub>θ̈<sub>a</sub>
+                </p>
+              
+                <p>
+                Where:<br>
+                - τ<sub>a</sub> is the actual joint torque<br>
+                - τ<sub>m</sub> is motor torque<br>
+                - B<sub>a</sub> is viscous damping<br>
+                - J<sub>a</sub> is rotor inertia<br>
+                - Friction τ<sub>f</sub>(θ̇<sub>a</sub>, I<sub>q</sub>) = sgn(θ̇<sub>a</sub>)(f<sub>c</sub> + f<sub>g</sub>|I<sub>q</sub>|)
+                </p>
+
+                <h4>Results</h4>
+                <ul>
+                    <li>Torque constant: −0.145 Nm/A</li>
+                    <li>Coulomb friction (f<sub>c</sub>): 0.00787 Nm</li>
+                    <li>Gear friction (f<sub>g</sub>): 0.0211 Nm/A</li>
+                    <li>Damping coefficient (B<sub>a</sub>): −9.1 × 10⁻⁵ Nm·s/rad</li>
+                    <li>Moment of inertia (J<sub>a</sub>): 8.1 × 10⁻⁵ Nm·s²/rad</li>
+                    <li>Model captured 99.1% of the variance</li>
+                    <li>RMS residual: 0.067 Nm (1.43% of peak torque)</li>
+                  </ul>
+                  <div style="text-align: center; padding-bottom: 24px;"><img src="../assets/img/dynamic_results.png"  class="img-fluid" alt="" height="315" width="560"></div>             
+                  
+                  <h3>Static Test</h3>
+
+                  <h4>Setup for the Static Test</h4>
+                <p>One ACT-PACK motor is connected to a Futek torque sensor using a shaft and flexible couplers, while the opposite end of the sensor is rigidly mounted to a fixed plate. The entire assembly is securely mounted on a test bed. The Futek sensor communicates with a Raspberry Pi via I2C for data logging, and the motor is connected through a c-type cable and controlled using the Open Source Leg (OSL) libraries.</p>
+                <div style="text-align: center; padding-bottom: 24px;"><img src="../assets/img/static case.jpg"  class="img-fluid" alt="" height="315" width="560"></div>  
+                
+                <h4>Methodology</h4>
+  <p>
+  For the static tests, the motor operated in current control mode with a trapezoidal waveform: ramping to maximum in 1 second, holding for 2 seconds, ramping to negative maximum in 2 seconds, holding again for 2 seconds, then returning to zero and holding for 2 seconds. Peak current increased from 2.5 A to 20 A in 2.5 A steps. Data was logged similarly to the dynamic test and saved to CSV.
+  </p>
+
+  <p>Friction terms f<sub>c</sub> and f<sub>g</sub> from Dynamic tests were used to adjust torque as:</p>
+  <p>τ<sub>adjusted</sub> = τ<sub>measured</sub> − (f<sub>g</sub> × I<sub>q</sub>) + f<sub>c</sub></p>
+
+  <p>The static model was identified by fitting:</p>
+  <p>τ<sub>adjusted</sub> = K<sub>t</sub> × I<sub>q</sub></p>
+
+  <p>The figure presents the current profile, torque profile, and the resulting regression model, yielding K<sub>t</sub> = 0.145 Nm/A.</p>
+
+  <div style="text-align: center; padding-bottom: 24px;"><img src="../assets/img/result_static.png"  class="img-fluid" alt="" height="315" width="560"></div>  
+
+  <h3>Drill Test</h3>
+
+  <p>For the drill test, an oscilloscope, one ACT-PACK motor, and a handheld drill were used to actuate the motor.</p>
+
+  <h4>Methodology</h4>
+  <p>
+  The drill test involves actuating the ACT-PACK motor at low speed using a handheld drill connected via a shaft. The motor leads are connected to an oscilloscope, which records the voltage over time. From the recorded waveform, the torque constant K<sub>t</sub> is estimated using the equation:
+  </p>
+
+  <p>
+  K<sub>t</sub> = (V<sub>pk-pk</sub> / 2√2) / (3 × f × 2π × pole pairs)
+  </p>
+
+  <p>
+  Given the motor is delta-wound and has 21 pole pairs, this method provides an estimate of the motor’s torque constant based on the back-EMF profile.
+  </p>
+
+  <h4>Result</h4>
+  <p>Results of the Drill Test shows the voltage vs. time plot and the estimated torque constant K<sub>t</sub>.</p>
+  <p><strong>The estimated torque constant K<sub>t</sub> from the Drill Test was found to be 0.156 Nm/A.</strong></p>
+  <p>The discrepancy in the torque constant observed between the static and dynamic tests versus the drill test arises because, during the drill test, the motor speed is too low for Coulomb and gear friction to significantly influence the measured torque constant.</p>
+
+  <div style="text-align: center; padding-bottom: 24px;"><img src="../assets/img/drill_test_result.png"  class="img-fluid" alt="" height="315" width="560"></div>  
+
+  <h3>Thermal Characterization of the new T-motors</h3>
+  <h4>Methodology</h4>
+  <p>The thermal model used for thermal characterization is based on the Cauer thermal network,
+    which represents heat transfer through a series of thermal resistances and capacitances arranged in a chain.
+    This structure models the flow of heat through successive layers of a system.</p>
+
+<div style="text-align: center; padding-bottom: 24px;"><img src="../assets/img/thermal_model.png"  class="img-fluid" alt="" height="315" width="560"></div>  
+    <p>The parameters of the model indicated in the figure are as follows:</p>
+<ul>
+  <li><strong>Cw:</strong> Thermal capacitance of the winding</li>
+  <li><strong>Ch:</strong> Thermal capacitance of the housing</li>
+  <li><strong>Rw-h:</strong> Thermal resistance between the winding and the housing</li>
+  <li><strong>Rh-a:</strong> Thermal resistance between the housing and ambient environment</li>
+  <li><strong>T_w:</strong> Temperature of the winding</li>
+  <li><strong>T_c:</strong> Temperature of the case</li>
+  <li><strong>T_a:</strong> Temperature of the ambient</li>
+  <li><strong>I:</strong> q-axis Current</li>
+  <li><strong>R:</strong> Resistance of winding to q-axis current</li>
+</ul>
+
+<p>
+  Since this thermal model had previously been used to characterize the earlier version of the Actpack, 
+  it was chosen again for the thermal characterization of the new Act-Packs. 
+  To analyze the variation in case temperature, q-axis currents of 6 A, 3.5 A, and 4.5 A were applied 
+  to the Dephy Drives across three separate tests. 
+  Test 1, which used 6 A, ran for 1 hour and 12 minutes, 
+  while the other two tests, using 3.5 A and 4.5 A respectively, each ran for 38 minutes. 
+  Thermal data was captured using an infrared camera (as shown in Figure 2), 
+  and the motor current was logged at 300 Hz using the OSL library.
+  </p>
+
+  <div style="text-align: center; padding-bottom: 24px;"><img src="../assets/img/thermal_test.png"  class="img-fluid" alt="" height="315" width="560"></div>  
+  <em>Figure 2: Displays the live feed from the thermal camera. The average temperature within the bounding box was considered, as it encompassed both the plastic and metal sections of the motor casing.</em>
+
+  <p>
+    This current profile was then the input to the thermal model, 
+    which uses Euler’s numerical method to solve a pair of first-order ordinary differential equations (ODEs) governing the system’s thermal behavior.
+    </p>
+    
+    <p>
+    The time step for numerically solving the two ODEs was set to <code>dt = 1/300</code> seconds, 
+    corresponding to the inverse of the update frequency. 
+    This allowed the model to generate predicted values of <code>Tw</code> and <code>Th</code> at each time step. 
+    The predicted <code>Th</code> values were then used to plot their variation over time.
+    </p>
+    
+    <p>
+    This predicted temperature profile was compared against the actual housing temperature data recorded by the thermal camera, 
+    effectively showing the rise in housing temperature over time alongside the model’s prediction. 
+    The thermal camera records the temperature at 30 Hz; interpolation was used to get the two data points on the same time scale, 
+    and the data was plotted in one graph.
+    </p>
+
+    <!-- <div style="text-align: center; padding-bottom: 24px;"><img src="../assets/img/thermal_results.png"  class="img-fluid" alt="" height="315" width="560"></div>   -->
+
+    <h4>Results and Discussion</h4>
+    <p>The thermal model developed for the first version of the ActPack is applicable to the third version of the AK80-9 as well. 
+      Despite using the same architecture, the newer motors offer a higher torque constant while exhibiting thermal behavior 
+      that closely matches the original ActPack.</p>
+
+          <div style="text-align: center; padding-bottom: 24px;"><img src="../assets/img/thermal_plots.png"  class="img-fluid" alt="" height="315" width="560"></div>  
+    <div style="text-align: center; padding-bottom: 24px;"><img src="../assets/img/thermal_plot_test3_3.5amps.png"  class="img-fluid" alt="" height="315" width="560"></div>  
+    <div style="text-align: center; padding-bottom: 24px;"><img src="../assets/img/temp plots 4.5 amps.png"  class="img-fluid" alt="" height="315" width="560"></div>  
+<em>    Figure 3: The images above illustrate the variation in case temperature across all three cases. 
+  It is evident that the temperature rise observed using the thermal camera closely aligns with the predictions made by the model.
+</em>
+
+
+      <h3>References</h3>
+<ol>
+  <li>
+    U. H. Lee, C. -W. Pan and E. J. Rouse, 
+    "Empirical Characterization of a High-performance Exterior-rotor Type Brushless DC Motor and Drive," 
+    2019 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), Macau, China, 2019.
+  </li>
+</ol>
+
+
+
+  
+        </div>
+      </div><!-- End Portfolio Details -->
+    </main><!-- End #main -->
+
+  <!-- Vendor JS Files -->
+  <script src="../assets/vendor/jquery/jquery.min.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="../assets/vendor/counterup/counterup.min.js"></script>
+  <script src="../assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/venobox/venobox.min.js"></script>
+  <script src="../assets/vendor/typed.js/typed.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="../assets/js/main.js"></script>
+
+</body>
+</html> 
