@@ -1,0 +1,161 @@
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Antenna Booming Mechanism</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="../assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/venobox/venobox.css" rel="stylesheet">
+
+      <!-- Template Main CSS File -->
+  <link href="../assets/css/style.css" rel="stylesheet">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RCVN4DN6FS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-RCVN4DN6FS');
+  </script>
+
+  <!-- =======================================================
+  * Template Name: Personal - v2.2.0
+  * Template URL: https://bootstrapmade.com/personal-free-resume-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body data-gr-c-s-loaded="true">
+
+<!-- ======= Portfolio Details ======= -->
+  <main id="main">
+    <div id="portfolio-details" class="portfolio-details">
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-lg-12 portfolio-info">
+            <br>
+            <h2 style="color:#12d640">Navigating Wheelchairs in Cluttered Areas</h2>
+            <br>
+            <p>Introduction: The project is a graduate research initiative at the University of Michigan, College of Engineering. I developed this system to address critical accessibility challenges, specifically focusing on the maneuvering capabilities of powered wheelchairs. I was responsible for the development of a hybrid maneuvering architecture that integrates user-friendly interfaces with advanced autonomous navigation algorithms.</p>
+            
+            <div class="embed-responsive embed-responsive-16by9 mx-auto" style="max-width: 560px; margin: 20px auto;">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/bIcUB7SUiFA?si=ip4C1QFmFC2wzQrc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width: 100%; height: 100%;"></iframe>
+            </div>
+
+            <div style="text-align: center; padding-bottom: 24px;"><img src="../assets/img/wheelchair pic.png" class="img-fluid" alt="" height="315" width="560"><br><br></div>
+            
+            <br>
+            <h3 style="color:white">Abstract</h3>
+            <p>Maneuvering power wheelchairs in tight, congested spaces such as elevators, buses, and doctor's offices presents critical safety and usability challenges for people with physical disabilities. Standard navigation systems often fail in these confined environments where precise positioning is required. To address this, we introduce a Tap-to-Park system, utilizing a hybrid planning architecture that combines model-based control with Deep Reinforcement Learning (DRL). We implemented an end-to-end solution using the TD3 algorithm, which maps raw sensor data directly to velocity commands, eliminating the need for pre-mapping. To evaluate the effectiveness of our approach, we conducted extensive training and simulation tests using a Turtlebot platform to validate the maneuvering capabilities. Experimental results demonstrate that switching to Google Cartographer for localization improved precision by 20-30% over conventional methods, allowing the wheelchair to park within 12 cm of the designated target. Our findings indicate that pre-training the actor network with teleoperation data significantly stabilizes the learning process for complex maneuvering tasks.</p>
+            
+            <h3 style="color:white">Introduction</h3>
+            <p>Power wheelchair systems are often difficult to maneuver in tight spaces, leading to excessive reliance on caregivers and limiting the social participation of users. While standard navigation allows for movement between points, it is insufficient for tasks requiring high precision, such as parking or docking. These tasks require real-time obstacle avoidance that cannot be pre-mapped. Literature suggests various approaches, such as visual servoing using QR codes, which requires impractical environmental modifications. Other methods, like sensor fusion (LiDAR and IMU), have enabled high-precision docking but often lack adaptability. Recent advancements have utilized Deep Reinforcement Learning (DRL) to navigate dynamic environments. In this context, our research proposes a Hybrid Reinforcement Learning Planner. This approach utilizes a standard local planner by default but switches to an RL-based agent when the planner fails or costs become excessive in narrow environments.</p>
+            
+            <h3 style="color:white">Maneuvering Methodology</h3>
+            <p>The methodology is divided into two primary components: the User Interface (UI) and the Maneuvering algorithm.</p>
+            
+            <h4 style="color:white">User Interface</h4>
+            <p>We developed a seamless "Tap-to-Park" interface integrated into a tablet. Users simply select a designated spot on a touchpad, and the ROS-powered system autonomously navigates the wheelchair to that location. The system also allows users to "publish points" to draw their own path if the generated path is unsatisfactory.</p>
+            
+            <div class="embed-responsive embed-responsive-4by3 mx-auto" style="max-width: 640px; margin: 20px auto;">
+              <iframe src="https://drive.google.com/file/d/1GTZgUKfYtRo2YNJx8dXxGeVnlQKVDeAg/preview" width="640" height="480" style="width: 100%; height: 100%;" allow="autoplay"></iframe>
+            </div>
+            
+            <h4 style="color:white">Localization</h4>
+            <p>Achieving high precision is contingent upon robust localization. We replaced the standard Adaptive Monte Carlo Localization (AMCL) with Google Cartographer, utilizing Pbstream for autonomous localization. This shift resulted in a 20-30% improvement in localization precision compared to AMCL.</p>
+            
+            <div style="text-align: center; margin: 20px 0;">
+              <img src="../assets/img/localization_comparison.png" class="img-fluid" alt="Localization Comparison" style="max-width: 100%; height: auto;">
+            </div>
+            <div class="row" style="margin: 20px 0;">
+              <div class="col-md-6" style="text-align: center;">
+                <p style="color: white;"><strong>Localization of Cartographer</strong><br>Much more Precise - 20 to 30% more precise</p>
+              </div>
+              <div class="col-md-6" style="text-align: center;">
+                <p style="color: white;"><strong>Localization of AMCL</strong><br>The localization gets more precise when the robot starts moving</p>
+              </div>
+            </div>
+            
+            <div style="text-align: center; margin: 20px 0;">
+              <img src="../assets/img/wheelchair_setup.png" class="img-fluid" alt="Wheelchair Setup" style="max-width: 100%; height: auto;">
+            </div>
+            <p style="color: white; text-align: center; margin-bottom: 20px;">It worked very well on the actual wheelchair - Cartographer achieved good parking but the planner used to fail because of high cost, so that's why we decided to switch to a hybrid RL MPC controller.</p>
+            
+            <h4 style="color:white">Hybrid Planning Architecture</h4>
+            <p>We addressed the limitations of model-based planners (like DWA), which often fail near goals in confined spaces, by developing a hybrid planner. The system employs the Twin Delayed DDPG (TD3) algorithm, an Actor-Critic model that generates continuous velocity commands from raw LiDAR and IMU data. This end-to-end solution offers higher stability and faster convergence than traditional methods.</p>
+            
+            <div style="text-align: center; margin: 20px 0;">
+              <img src="../assets/img/td3_architecture.png" class="img-fluid" alt="TD3 Architecture Diagram" style="max-width: 100%; height: auto;">
+            </div>
+            
+            <h4 style="color:white">Pre-Training Protocol</h4>
+            <p>To overcome the "cold start" problem in RL, we implemented a pre-training phase. We recorded state and command velocity values during teleoperation to collect demonstration data. The actor network is then pre-trained for 10 epochs on this data, providing a behavioral baseline before the actual reinforcement learning process begins.</p>
+            
+            <div style="text-align: center; margin: 20px 0;">
+              <img src="../assets/img/training_pipeline.png" class="img-fluid" alt="Training Pipeline Flowchart" style="max-width: 100%; height: auto;">
+            </div>
+            
+            <h3 style="color:white">Results and Discussion</h3>
+            <p>We validated the training pipeline using a Turtlebot simulation, which shares non-holonomic constraints with the target wheelchair platform. The localization updates using Cartographer were tested on the real wheelchair, confirming the ability to park within a 12 cm error margin.</p>
+            
+            <h4 style="color:white">Training Analysis</h4>
+            <p>The agent was trained to navigate from an initial position to a goal position over 1000 episodes. The reward function was designed to heavily penalize collisions, triggering a respawn function to reset the episode.</p>
+            
+            <h4 style="color:white">Scenario Performance</h4>
+            <p>In testing scenarios involving goal orientation changes (e.g., upward vs. leftward goals), the model achieved total rewards of 120 and 135 respectively. The higher reward in the second scenario indicates successful maneuvering to obtain different orientations.</p>
+            
+            <h4 style="color:white">Pre-Training Efficacy</h4>
+            <p>The results confirmed that pre-training the weights of the Actor network helped achieve faster results and prevented the GPU from overheating during the rigorous training process.</p>
+            
+            <div class="row" style="margin: 20px 0;">
+              <div class="col-md-6 order-md-2" style="text-align: center; margin-bottom: 20px;">
+                <div class="embed-responsive embed-responsive-4by3 mx-auto" style="max-width: 640px; margin: 20px auto;">
+                  <iframe src="https://drive.google.com/file/d/1B5m7l74Q7dBItG-pOLZdbX0aDdLpnRJt/preview" width="640" height="480" style="width: 100%; height: 100%;" allow="autoplay"></iframe>
+                </div>
+                <p style="color: white; margin-top: 10px;">results of training in simulation</p>
+              </div>
+              <div class="col-md-6 order-md-1" style="text-align: center; margin-bottom: 20px;">
+                <div class="embed-responsive embed-responsive-4by3 mx-auto" style="max-width: 640px; margin: 20px auto;">
+                  <iframe src="https://drive.google.com/file/d/1h4nxqgiM_JFamrJYsAim39Zsv2zymRqy/preview" width="640" height="480" style="width: 100%; height: 100%;" allow="autoplay"></iframe>
+                </div>
+                <p style="color: white; margin-top: 10px;">results of training in simulation under a different goal orientation</p>
+              </div>
+            </div>
+            
+            <h3 style="color:white">Future Work and Conclusion</h3>
+            <p>The hybrid planner successfully addressed the failure modes of standard planners in narrow environments by integrating a robust RL agent. Current work focuses on tuning the reward function and achieving maneuvering in the full wheelchair simulation to address the sim-to-real gap. Future phases will involve introducing agentic behavior to the wheelchair system and finalizing the switch logic between MPC and learning-based control.</p>
+            
+            <h3 style="color:white">References</h3>
+            <ol style="padding-left: 20px;">
+              <li>Mortenson, W. B., Clarke, P., Haas, B., & Rushton, P. W. (2017). Understanding the Burden Experienced by Caregivers of Older Adults Who Use a Powered Wheelchair: A Cross-Sectional Study. <em>Archives of Physical Medicine and Rehabilitation</em>, 98(8), 1614–1622.</li>
+              <li>Rushton, P. W., Kairy, D., Archambault, P., Pituch, E., Torkia, C., El Fathi, A., ... & Pineau, J. (2015). The potential impact of intelligent power wheelchair use on social participation: perspectives of users, caregivers and clinicians. <em>Disability and Rehabilitation: Assistive Technology</em>, 10(3), 191-197.</li>
+              <li>Mortenson, W. B., Clarke, P., Haas, B., & Rushton, P. W. (2017). Understanding the Burden Experienced by Caregivers of Older Adults Who Use a Powered Wheelchair: A Cross-Sectional Study. <em>Archives of Physical Medicine and Rehabilitation</em>, 98(8), 1614–1622.</li>
+              <li>Laliberté Rudman, D., Hebert, D., & Reid, D. (2006). Living in a restricted occupational world: the occupational experiences of stroke survivors who are wheelchair users and their caregivers. <em>Canadian Journal of Occupational Therapy</em>, 73(3), 141–152.</li>
+              <li>Urdiales, C., et al. (2018). Sub-centimeter accuracy autonomous docking for an intelligent wheelchair. <em>Sensors</em>, 18(9), 2969.</li>
+              <li>Scalise, R., et al. (2022). Autonomous Docking for a Smart Wheelchair: A Pilot Study. In <em>2022 IEEE International Conference on Mechatronics and Embedded Systems and Applications (MESA)</em> (pp. 1-6). IEEE.</li>
+              <li>Lopes, A. C., et al. (2018). Context-aware shared control for smart wheelchair navigation in tight spaces. In <em>2018 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)</em> (pp. 1-8). IEEE.</li>
+              <li>Li, Z., et al. (2021). Reinforcement learning-based intelligent wheelchair for safe and efficient navigation in dynamic environments. <em>IEEE Transactions on Neural Systems and Rehabilitation Engineering</em>, 29, 1366-1375.</li>
+              <li>A. K. Sandula, R. M, D. Ghose and P. Biswas, "Human(s) On The Loop Demand Aware Robot Scheduling: A Mixed Reality based User Study," <em>2024 33rd IEEE International Conference on Robot and Human Interactive Communication (ROMAN)</em>, Pasadena, CA, USA, 2024, pp. 204-209, doi: 10.1109/RO-MAN60168.2024.10731408. keywords: {Visualization;Decision making;Mixed reality;Human-robot interaction;Dynamic scheduling;Autonomous agents;Planning;Resource management;Collision avoidance;Robots}.</li>
+              <li>Zi, Y., Ang, M. H., & Li, Y. (2020). A new metric for assessing the performance of 2D Lidar SLAMs. In <em>Proceedings of the 6th Collaborative European Research Conference (CERC 2020)</em> (Vol. 2815, pp. 64-77). CEUR Workshop Proceedings.</li>
+              <li>RL-OGM-Parking: Lidar OGM-Based Hybrid Reinforcement Learning Planner for Autonomous Parking</li>
+              <li>Jeng, S.-L.; Chiang, C. End-to-End Autonomous Navigation Based on Deep Reinforcement Learning with a Survival Penalty Function. <em>Sensors</em> 2023, 23, 8651. https://doi.org/10.3390/s23208651</li>
+            </ol>
